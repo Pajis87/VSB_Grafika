@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Grafika.vcxproj" Id="fd17be1f-2f09-4d8b-b2bd-1ff4152fe96a" />
+</Solution>
