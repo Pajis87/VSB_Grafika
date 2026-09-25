@@ -31,7 +31,7 @@ float noise(vec3 p){
 
 void main()
 {
-    FragColor = vec4(0.0, noise((vertexColor+10) * 20), 0.0, 1.0);
+    FragColor = vec4(0.0, 0.0, noise((vertexColor+10) * 20), 1.0);
 }
 
 

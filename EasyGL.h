@@ -1,8 +1,29 @@
 #include "includer.h"
 
-struct RenderMesh {
-	GLuint vao = 0;
-	GLuint vbo = 0;
+class RenderMesh {
+public:
+	GLuint vao;
+	GLuint vbo;
+	GLuint shaderProgram;
+	std::span<const float> vertexData;
+	int stride;
+
+	RenderMesh(GLuint vao, GLuint vbo, std::span<const float> vertexData) {
+		this->vao = vao;
+		this->vbo = vbo;
+		this->vertexData = vertexData;
+	}
+	void setShaderProgram(GLuint shaderProgram) {
+		this->shaderProgram = shaderProgram;
+	}
+	void setStride(int stride) {
+		this->stride = stride;
+	}
+	void draw() {
+		glUseProgram(shaderProgram);
+		glBindVertexArray(vao);
+		glDrawArrays(GL_TRIANGLES, 0, vertexData.size_bytes() / stride);
+	}
 };
 
 class EasyGL {
@@ -63,7 +84,7 @@ public:
 	}
 
 	RenderMesh createModel(std::span<const float> vertexData, std::vector<int> attributeSizes) {
-		RenderMesh mesh = { objectIndex, objectIndex };
+		RenderMesh mesh = RenderMesh(objectIndex, objectIndex, vertexData);
 		objectIndex++;
 
 		glGenBuffers(1, &mesh.vbo);
@@ -79,6 +100,7 @@ public:
 			totalComponents += size;
 		}
 		const int stride = totalComponents * sizeof(float);
+		mesh.setStride(stride);
 
 
 		int byteOffset = 0;

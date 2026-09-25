@@ -4,7 +4,7 @@ layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 color;
 
 out vec3 vertexColor;
-vec3 offset = vec3(-0.35, -0.45, -0.2);
+vec3 offset = vec3(-0.4, -0.55, -0.2);
 
 
 void main()
