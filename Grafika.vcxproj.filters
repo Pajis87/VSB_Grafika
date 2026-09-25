@@ -32,7 +32,7 @@
     <None Include="shaders\basic.vert">
       <Filter>Soubory zdrojů\shaders</Filter>
     </None>
-    <None Include="shaders\green.frag">
+    <None Include="shaders\blue.frag">
       <Filter>Soubory zdrojů\shaders</Filter>
     </None>
     <None Include="shaders\red.frag">
@@ -42,6 +42,9 @@
       <Filter>Soubory zdrojů\shaders</Filter>
     </None>
     <None Include="shaders\shifted2.vert">
+      <Filter>Soubory zdrojů\shaders</Filter>
+    </None>
+    <None Include="shaders\tree.vert">
       <Filter>Soubory zdrojů\shaders</Filter>
     </None>
   </ItemGroup>
@@ -60,6 +63,9 @@
     </ClInclude>
     <ClInclude Include="EasyGL.h">
       <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="models\sphere.h">
+      <Filter>Soubory zdrojů\models</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
