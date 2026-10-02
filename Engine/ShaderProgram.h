@@ -1,4 +1,4 @@
-// This file was created by Pavel Brazda - BRA0241
+// This file was mostly created by Pavel Brazda - BRA0241 (exceptions are annotated)
 
 #ifndef SHADER_PROGRAM_H
 #define SHADER_PROGRAM_H
@@ -21,7 +21,29 @@ public:
 		return this->shaderProgram;
 	}
 
-	void setVec3Variable(const GLchar *name, float v1, float v2, float v3) {
+	void setVariable(const GLchar* name, float v1) {
+		glUseProgram(this->shaderProgram);
+		int location = glGetUniformLocation(this->shaderProgram, name);
+		if (location == -1) {
+			std::cout << "Uniform variable " << name << " not found in shader program." << std::endl;
+		}
+		else {
+			glUniform1f(location, v1);
+		}
+		glUseProgram(0);
+	}
+	void setVariable(const GLchar* name, float v1, float v2) {
+		glUseProgram(this->shaderProgram);
+		int location = glGetUniformLocation(this->shaderProgram, name);
+		if (location == -1) {
+			std::cout << "Uniform variable " << name << " not found in shader program." << std::endl;
+		}
+		else {
+			glUniform2f(location, v1, v2);
+		}
+		glUseProgram(0);
+	}
+	void setVariable(const GLchar* name, float v1, float v2, float v3) {
 		glUseProgram(this->shaderProgram);
 		int location = glGetUniformLocation(this->shaderProgram, name);
 		if (location == -1) {

@@ -62,9 +62,6 @@
     <ClInclude Include="Assets\models\sphere.h">
       <Filter>Assets\models</Filter>
     </ClInclude>
-    <ClInclude Include="Assets\models\tree.h">
-      <Filter>Assets\models</Filter>
-    </ClInclude>
     <ClInclude Include="Assets\GameObjects\Triangle.h">
       <Filter>Assets\GameObjects</Filter>
     </ClInclude>
@@ -72,6 +69,18 @@
       <Filter>Assets\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Assets\GameObjects\Tree.h">
+      <Filter>Assets\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\mybush.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\GameObjects\Bush.h">
+      <Filter>Assets\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\login.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\GameObjects\Login.h">
       <Filter>Assets\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
@@ -82,19 +91,7 @@
     <None Include="Assets\shaders\basic.vert">
       <Filter>Assets\shaders</Filter>
     </None>
-    <None Include="Assets\shaders\blue.frag">
-      <Filter>Assets\shaders</Filter>
-    </None>
-    <None Include="Assets\shaders\red.frag">
-      <Filter>Assets\shaders</Filter>
-    </None>
-    <None Include="Assets\shaders\shifted.vert">
-      <Filter>Assets\shaders</Filter>
-    </None>
-    <None Include="Assets\shaders\shifted2.vert">
-      <Filter>Assets\shaders</Filter>
-    </None>
-    <None Include="Assets\shaders\tree.vert">
+    <None Include="Assets\shaders\gray.frag">
       <Filter>Assets\shaders</Filter>
     </None>
   </ItemGroup>

@@ -15,7 +15,7 @@ public:
 	void updateGameObjects() {
 		for (GameObject* object : objects) {
 			object->update();
-		}
+		}	
 	}
 
 	void startGameObjects() {

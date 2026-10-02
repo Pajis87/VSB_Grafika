@@ -1,3 +1,5 @@
+// This file was created by Pavel Brazda - BRA0241
+
 #ifndef MY_APPLICATION_H
 #define MY_APPLICATION_H
 
@@ -8,6 +10,8 @@
 #include "Assets/GameObjects/Triangle.h"
 #include "Assets/GameObjects/Sphere.h"
 #include "Assets/GameObjects/Tree.h"
+#include "Assets/GameObjects/Bush.h"
+#include "Assets/GameObjects/Login.h"
 
 
 struct AppData {
@@ -77,8 +81,27 @@ public:
 				tree->position = Vector3(i * 0.2f - 0.9f, j * 0.4f - 0.9f, 0.0f);
 				tree->scale = Vector3(0.1f, 0.1f, 0.1f);
 				scenes.at("tree")->addObject(tree);
+
+				Bush* bush = new Bush();
+				bush->position = Vector3(i * 0.2f - 0.85f, j * 0.4f - 0.95f, -0.5f);
+				bush->scale = Vector3(0.1f, 0.1f, 0.1f);
+				scenes.at("tree")->addObject(bush);
 			}
 		}
+
+
+		Login* bigLogin = new Login();
+		bigLogin->scale = Vector3(0.5f, 0.5f, 1.0f);
+		scenes.at("login")->addObject(bigLogin);
+
+
+		Login* rightBottomLogin = new Login();
+		rightBottomLogin->position = Vector3(0.7f, -0.8f, -0.8f);
+		rightBottomLogin->scale = Vector3(0.15f, 0.15f, 0.15f);
+
+		scenes.at("triangle")->addObject(rightBottomLogin);
+		scenes.at("sphere")->addObject(rightBottomLogin);
+		scenes.at("tree")->addObject(rightBottomLogin);
 	}
 
 	void run() {

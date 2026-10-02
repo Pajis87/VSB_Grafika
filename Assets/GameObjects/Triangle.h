@@ -1,3 +1,5 @@
+// This file was created by Pavel Brazda - BRA0241
+
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
@@ -17,7 +19,7 @@ public:
 	}
 
 	void update() override {
-		this->position.x += 0.005f;
+		this->rotation.y += 0.025f;
 	}
 };
 

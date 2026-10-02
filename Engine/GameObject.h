@@ -19,8 +19,9 @@ public:
 		this->stride = stride;
 	}
 	void draw() {
-		this->shaderProgram->setVec3Variable("offset", position.x, position.y, position.z);
-		this->shaderProgram->setVec3Variable("scale", scale.x, scale.y, scale.z);
+		this->shaderProgram->setVariable("offset", position.x, position.y, position.z);
+		this->shaderProgram->setVariable("rotation", rotation.x, rotation.y, rotation.z);
+		this->shaderProgram->setVariable("scale", scale.x, scale.y, scale.z);
 
 		glUseProgram(shaderProgram->getShaderProgram());
 		glBindVertexArray(vao);

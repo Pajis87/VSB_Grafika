@@ -1,3 +1,5 @@
+// This file was created by Pavel Brazda - BRA0241
+
 #ifndef VECTOR3_H
 #define VECTOR3_H
 

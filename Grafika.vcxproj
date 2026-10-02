@@ -146,13 +146,16 @@
     <ClCompile Include="Grafika.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assets\GameObjects\Bush.h" />
+    <ClInclude Include="Assets\GameObjects\Login.h" />
     <ClInclude Include="Assets\GameObjects\Sphere.h" />
     <ClInclude Include="Assets\GameObjects\Tree.h" />
     <ClInclude Include="Assets\GameObjects\Triangle.h" />
     <ClInclude Include="Assets\models\gift.h" />
+    <ClInclude Include="Assets\models\login.h" />
+    <ClInclude Include="Assets\models\mybush.h" />
     <ClInclude Include="Assets\models\mytree.h" />
     <ClInclude Include="Assets\models\sphere.h" />
-    <ClInclude Include="Assets\models\tree.h" />
     <ClInclude Include="Engine\EasyGL.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\gl_includer.h" />
@@ -164,11 +167,7 @@
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag" />
     <None Include="Assets\shaders\basic.vert" />
-    <None Include="Assets\shaders\blue.frag" />
-    <None Include="Assets\shaders\red.frag" />
-    <None Include="Assets\shaders\shifted.vert" />
-    <None Include="Assets\shaders\shifted2.vert" />
-    <None Include="Assets\shaders\tree.vert" />
+    <None Include="Assets\shaders\gray.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

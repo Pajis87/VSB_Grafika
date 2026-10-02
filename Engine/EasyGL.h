@@ -60,7 +60,6 @@ public:
 		glfwSetKeyCallback(window, callback);
 	}
 
-	// umožní získat okno z venku (např. pro nastavení user pointeru nebo callbacku)
 	GLFWwindow* getWindow() {
 		return window;
 	}

@@ -1,3 +1,5 @@
+// This file was created by Pavel Brazda - BRA0241
+
 #ifndef SPHERE_H
 #define SPHERE_H
 
