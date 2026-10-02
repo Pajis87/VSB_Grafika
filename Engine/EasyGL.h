@@ -1,7 +1,9 @@
 // This file was mostly created by Pavel Brazda - BRA0241 (exceptions are annotated)
 
+#ifndef EASY_GL_H
+#define EASY_GL_H
 
-#include "includer.h"
+#include "gl_includer.h"
 #include "Scene.h"
 #include "GameObject.h"
 
@@ -90,3 +92,5 @@ private:
 	GLFWwindow* window;
 	Scene* activeScene = nullptr;
 };
+
+#endif

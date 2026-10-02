@@ -1,7 +1,5 @@
-﻿#include "EasyGL.h"
-#include "models/sphere.h"
-#include "ShaderProgram.h"
-#include <cmath>
+﻿#include "MyApplication.cpp"
+
 
 struct AppData {
     EasyGL* app;
@@ -42,7 +40,7 @@ float cycle(float time, float period) {
 };
 
 int main() {
-    EasyGL app;
+    /*EasyGL app;
     app.init(800, 800, "ZPG");
 
 
@@ -67,12 +65,20 @@ int main() {
     sphereScene.addObject(sphere_object);
 
 
+    Scene treeScene = Scene();
+    GameObject tree_object = GameObject(tree, { 3, 3 });
+    ShaderProgram treeShaderProgram("shaders/basic.vert", "shaders/basic.frag");
+    tree_object.setShaderProgram(&treeShaderProgram);
+    treeScene.addObject(tree_object);
+
+
 	app.setActiveScene(&triangleScene);
-	app.addKeyCallback(key_callback);
+
 
 
     AppData* data = new AppData{ &app, &triangleScene, &sphereScene };
     glfwSetWindowUserPointer(app.getWindow(), data);
+    app.addKeyCallback(key_callback);
 
 
     while (app.running()) {
@@ -83,7 +89,15 @@ int main() {
 
 
         app.endFrame();
-    }
+    }*/
 
-    exit(EXIT_SUCCESS);
+
+    MyApplication* app = new MyApplication();
+	app->init();
+    app->setupScenes();
+    app->setupGameObjects();
+
+    app->run();
+
+    return 0;
 }

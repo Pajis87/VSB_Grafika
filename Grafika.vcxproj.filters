@@ -9,15 +9,21 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Soubory zdrojů">
+    <Filter Include="Engine">
+      <UniqueIdentifier>{e40d3f1e-f049-4b7b-a028-da9223732f5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Soubory zdrojů\models">
+    <Filter Include="Assets\models">
       <UniqueIdentifier>{981aa317-de08-4069-85d7-6ded127c1a41}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Soubory zdrojů\shaders">
+    <Filter Include="Assets\shaders">
       <UniqueIdentifier>{f2ed5c30-2203-43f3-a686-43d82ad9bbbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\GameObjects">
+      <UniqueIdentifier>{d7eab7a0-8908-4991-ae2a-23b729267f3f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -26,55 +32,64 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\basic.frag">
-      <Filter>Soubory zdrojů\shaders</Filter>
-    </None>
-    <None Include="shaders\basic.vert">
-      <Filter>Soubory zdrojů\shaders</Filter>
-    </None>
-    <None Include="shaders\blue.frag">
-      <Filter>Soubory zdrojů\shaders</Filter>
-    </None>
-    <None Include="shaders\red.frag">
-      <Filter>Soubory zdrojů\shaders</Filter>
-    </None>
-    <None Include="shaders\shifted.vert">
-      <Filter>Soubory zdrojů\shaders</Filter>
-    </None>
-    <None Include="shaders\shifted2.vert">
-      <Filter>Soubory zdrojů\shaders</Filter>
-    </None>
-    <None Include="shaders\tree.vert">
-      <Filter>Soubory zdrojů\shaders</Filter>
-    </None>
+    <ClInclude Include="MyApplication.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\EasyGL.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameObject.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\gl_includer.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Scene.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ShaderProgram.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector3.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\gift.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\mytree.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\sphere.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\tree.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\GameObjects\Triangle.h">
+      <Filter>Assets\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="models\gift.h">
-      <Filter>Soubory zdrojů\models</Filter>
-    </ClInclude>
-    <ClInclude Include="models\mytree.h">
-      <Filter>Soubory zdrojů\models</Filter>
-    </ClInclude>
-    <ClInclude Include="models\tree.h">
-      <Filter>Soubory zdrojů\models</Filter>
-    </ClInclude>
-    <ClInclude Include="includer.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="EasyGL.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="models\sphere.h">
-      <Filter>Soubory zdrojů\models</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderProgram.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
+    <None Include="Assets\shaders\basic.frag">
+      <Filter>Assets\shaders</Filter>
+    </None>
+    <None Include="Assets\shaders\basic.vert">
+      <Filter>Assets\shaders</Filter>
+    </None>
+    <None Include="Assets\shaders\blue.frag">
+      <Filter>Assets\shaders</Filter>
+    </None>
+    <None Include="Assets\shaders\red.frag">
+      <Filter>Assets\shaders</Filter>
+    </None>
+    <None Include="Assets\shaders\shifted.vert">
+      <Filter>Assets\shaders</Filter>
+    </None>
+    <None Include="Assets\shaders\shifted2.vert">
+      <Filter>Assets\shaders</Filter>
+    </None>
+    <None Include="Assets\shaders\tree.vert">
+      <Filter>Assets\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

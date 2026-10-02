@@ -1,6 +1,9 @@
-#include "includer.h"
+// This file was created by Pavel Brazda - BRA0241
+
 #ifndef SHADER_PROGRAM_H
 #define SHADER_PROGRAM_H
+
+#include "gl_includer.h"
 
 class ShaderProgram {
 public:

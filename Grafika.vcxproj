@@ -146,24 +146,27 @@
     <ClCompile Include="Grafika.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\basic.frag" />
-    <None Include="shaders\basic.vert" />
-    <None Include="shaders\blue.frag" />
-    <None Include="shaders\red.frag" />
-    <None Include="shaders\shifted.vert" />
-    <None Include="shaders\shifted2.vert" />
-    <None Include="shaders\tree.vert" />
+    <ClInclude Include="Assets\GameObjects\Triangle.h" />
+    <ClInclude Include="Assets\models\gift.h" />
+    <ClInclude Include="Assets\models\mytree.h" />
+    <ClInclude Include="Assets\models\sphere.h" />
+    <ClInclude Include="Assets\models\tree.h" />
+    <ClInclude Include="Engine\EasyGL.h" />
+    <ClInclude Include="Engine\GameObject.h" />
+    <ClInclude Include="Engine\gl_includer.h" />
+    <ClInclude Include="Engine\Scene.h" />
+    <ClInclude Include="Engine\ShaderProgram.h" />
+    <ClInclude Include="Engine\Vector3.h" />
+    <ClInclude Include="MyApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EasyGL.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="includer.h" />
-    <ClInclude Include="models\gift.h" />
-    <ClInclude Include="models\mytree.h" />
-    <ClInclude Include="models\sphere.h" />
-    <ClInclude Include="models\tree.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="ShaderProgram.h" />
+    <None Include="Assets\shaders\basic.frag" />
+    <None Include="Assets\shaders\basic.vert" />
+    <None Include="Assets\shaders\blue.frag" />
+    <None Include="Assets\shaders\red.frag" />
+    <None Include="Assets\shaders\shifted.vert" />
+    <None Include="Assets\shaders\shifted2.vert" />
+    <None Include="Assets\shaders\tree.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

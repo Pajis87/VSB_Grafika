@@ -1,5 +1,5 @@
-#ifndef INCLUDER
-#define INCLUDER
+#ifndef GL_INCLUDER
+#define GL_INCLUDER
 
 
 // ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ vvv

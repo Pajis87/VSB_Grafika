@@ -1,6 +1,10 @@
-#include "includer.h"
-#include "GameObject.h"
+// This file was created by Pavel Brazda - BRA0241
 
+#ifndef SCENE_H
+#define SCENE_H
+
+#include "gl_includer.h"
+#include "GameObject.h"
 
 class Scene {
 public:
@@ -15,3 +19,5 @@ public:
 private:
 	std::vector<GameObject> objects = {};
 };
+
+#endif
