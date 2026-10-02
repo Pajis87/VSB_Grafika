@@ -1,5 +1,8 @@
-#pragma once
+#ifndef INCLUDER
+#define INCLUDER
 
+
+// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ vvv
 //Include GLAD  
 //Only define this in one file
 #define GLAD_GL_IMPLEMENTATION
@@ -16,4 +19,10 @@
 #include <iterator>
 #include <iostream>
 #include <vector>
+// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ ^^^
+
+
 #include <span>
+
+
+#endif

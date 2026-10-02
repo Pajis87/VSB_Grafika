@@ -1,34 +1,17 @@
+// This file was mostly created by Pavel Brazda - BRA0241 (exceptions are annotated)
+
+
 #include "includer.h"
-
-class RenderMesh {
-public:
-	GLuint vao;
-	GLuint vbo;
-	GLuint shaderProgram;
-	std::span<const float> vertexData;
-	int stride;
-
-	RenderMesh(GLuint vao, GLuint vbo, std::span<const float> vertexData) {
-		this->vao = vao;
-		this->vbo = vbo;
-		this->vertexData = vertexData;
-	}
-	void setShaderProgram(GLuint shaderProgram) {
-		this->shaderProgram = shaderProgram;
-	}
-	void setStride(int stride) {
-		this->stride = stride;
-	}
-	void draw() {
-		glUseProgram(shaderProgram);
-		glBindVertexArray(vao);
-		glDrawArrays(GL_TRIANGLES, 0, vertexData.size_bytes() / stride);
-	}
-};
+#include "Scene.h"
+#include "GameObject.h"
 
 class EasyGL {
 public:
 	int init(int width, int height, const char* title) {
+
+
+
+		// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ AND EDITED vvv
 		// Initialize GLFW
 		if (!glfwInit())
 			exit(EXIT_FAILURE);
@@ -64,6 +47,8 @@ public:
 		int major, minor, revision;
 		glfwGetVersion(&major, &minor, &revision);
 		printf("Using GLFW %i.%i.%i\n", major, minor, revision);
+		// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ AND EDITED ^^^
+
 
 
 		glEnable(GL_DEPTH_TEST);
@@ -81,44 +66,6 @@ public:
 		glLinkProgram(shaderProgram);
 
 		return shaderProgram;
-	}
-
-	RenderMesh createModel(std::span<const float> vertexData, std::vector<int> attributeSizes) {
-		RenderMesh mesh = RenderMesh(objectIndex, objectIndex, vertexData);
-		objectIndex++;
-
-		glGenBuffers(1, &mesh.vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-		glBufferData(GL_ARRAY_BUFFER, vertexData.size_bytes(), vertexData.data(), GL_STATIC_DRAW);
-
-		glGenVertexArrays(1, &mesh.vao);
-		glBindVertexArray(mesh.vao);
-
-
-		int totalComponents = 0;
-		for (int size : attributeSizes) {
-			totalComponents += size;
-		}
-		const int stride = totalComponents * sizeof(float);
-		mesh.setStride(stride);
-
-
-		int byteOffset = 0;
-		for (GLuint i = 0; i < static_cast<GLuint>(attributeSizes.size()); ++i) {
-			glEnableVertexAttribArray(i);
-			glVertexAttribPointer(
-				i,
-				attributeSizes[i],
-				GL_FLOAT,
-				GL_FALSE,
-				stride,
-				(GLvoid*)byteOffset
-			);
-			byteOffset += attributeSizes[i] * sizeof(float);
-		}
-		glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-
-		return mesh;
 	}
 
 
@@ -139,6 +86,8 @@ private:
 	GLFWwindow* window;
 	GLuint objectIndex = 0;
 
+
+	// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ vvv
 	GLuint createShaderFromFile(GLenum shaderType, const char* shaderFile) {
 		// Creates an empty shader
 		GLuint shaderID = glCreateShader(shaderType);
@@ -178,4 +127,5 @@ private:
 		}
 		return shaderID;
 	}
+	// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ ^^^
 };

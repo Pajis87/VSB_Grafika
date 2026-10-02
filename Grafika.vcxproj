@@ -156,11 +156,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EasyGL.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="includer.h" />
     <ClInclude Include="models\gift.h" />
     <ClInclude Include="models\mytree.h" />
     <ClInclude Include="models\sphere.h" />
     <ClInclude Include="models\tree.h" />
+    <ClInclude Include="Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

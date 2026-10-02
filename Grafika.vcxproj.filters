@@ -67,5 +67,11 @@
     <ClInclude Include="models\sphere.h">
       <Filter>Soubory zdrojů\models</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
