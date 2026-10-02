@@ -163,6 +163,7 @@
     <ClInclude Include="models\sphere.h" />
     <ClInclude Include="models\tree.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="ShaderProgram.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

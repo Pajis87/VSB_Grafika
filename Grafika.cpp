@@ -1,6 +1,7 @@
 ﻿#include "EasyGL.h"
 #include "models/gift.h"
 #include "models/mytree.h"
+#include "ShaderProgram.h"
 
 int main() {
     EasyGL app;
@@ -13,11 +14,13 @@ int main() {
        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
     };
 	GameObject triangle = GameObject(points, { 3, 3 });
-
+	ShaderProgram triangleShaderProgram("shaders/basic.vert", "shaders/basic.frag");
+	triangle.setShaderProgram(&triangleShaderProgram);
 
 
 
     Scene triangleScene = Scene();
+	triangleScene.addObject(triangle);
 
 /*
 	// Tree and Gift scene
@@ -47,7 +50,7 @@ int main() {
         gift_model1.draw();
         */
 
-        triangle.draw();
+        triangleScene.draw();
 
         app.endFrame();
     }

@@ -1,16 +1,10 @@
 #include "includer.h"
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
+#include "ShaderProgram.h"
 
 class GameObject {
 public:
-	GLuint vao;
-	GLuint vbo;
-	GLuint shaderProgram;
-	std::span<const float> vertexData;
-	int stride;
-
-
 	GameObject(std::span<const float> vertexData, std::vector<int> attributeSizes) {
 		this->vao = GameObject::objectIndex;
 		this->vbo = GameObject::objectIndex;
@@ -48,19 +42,24 @@ public:
 		}
 		glBindBuffer(GL_ARRAY_BUFFER, this->vbo);
 	}
-	void setShaderProgram(GLuint shaderProgram) {
+	void setShaderProgram(ShaderProgram *shaderProgram) {
 		this->shaderProgram = shaderProgram;
 	}
 	void setStride(int stride) {
 		this->stride = stride;
 	}
 	void draw() {
-		glUseProgram(shaderProgram);
+		glUseProgram(shaderProgram->getShaderProgram());
 		glBindVertexArray(vao);
 		glDrawArrays(GL_TRIANGLES, 0, vertexData.size_bytes() / stride);
 	}
 private:
 	static int objectIndex;
+	GLuint vao;
+	GLuint vbo;
+	ShaderProgram *shaderProgram;
+	std::span<const float> vertexData;
+	int stride;
 };
 
 int GameObject::objectIndex = 0;
