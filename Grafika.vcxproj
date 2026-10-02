@@ -146,6 +146,8 @@
     <ClCompile Include="Grafika.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assets\GameObjects\Sphere.h" />
+    <ClInclude Include="Assets\GameObjects\Tree.h" />
     <ClInclude Include="Assets\GameObjects\Triangle.h" />
     <ClInclude Include="Assets\models\gift.h" />
     <ClInclude Include="Assets\models\mytree.h" />

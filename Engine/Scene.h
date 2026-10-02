@@ -18,6 +18,12 @@ public:
 		}
 	}
 
+	void startGameObjects() {
+		for (GameObject* object : objects) {
+			object->start();
+		}
+	}
+
 	void draw() {
 		for (GameObject* object : objects) {
 			object->draw();

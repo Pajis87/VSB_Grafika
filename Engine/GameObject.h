@@ -8,9 +8,10 @@
 
 class GameObject {
 public:
-	Vector3 position;
-	Vector3 rotation;
-	
+	Vector3 position = Vector3(0.0f, 0.0f, 0.0f);
+	Vector3 rotation = Vector3(0.0f, 0.0f, 0.0f);
+	Vector3 scale = Vector3(1.0f, 1.0f, 1.0f);
+
 	void setShaderProgram(ShaderProgram *shaderProgram) {
 		this->shaderProgram = shaderProgram;
 	}
@@ -19,14 +20,19 @@ public:
 	}
 	void draw() {
 		this->shaderProgram->setVec3Variable("offset", position.x, position.y, position.z);
+		this->shaderProgram->setVec3Variable("scale", scale.x, scale.y, scale.z);
 
 		glUseProgram(shaderProgram->getShaderProgram());
 		glBindVertexArray(vao);
 		glDrawArrays(GL_TRIANGLES, 0, vertexData.size_bytes() / stride);
 	}
 
+	virtual void start() {
+
+	}
+
 	virtual void update() {
-		
+
 	}
 
 protected:

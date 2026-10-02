@@ -68,6 +68,12 @@
     <ClInclude Include="Assets\GameObjects\Triangle.h">
       <Filter>Assets\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Assets\GameObjects\Sphere.h">
+      <Filter>Assets\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\GameObjects\Tree.h">
+      <Filter>Assets\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag">

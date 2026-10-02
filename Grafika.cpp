@@ -1,38 +1,6 @@
 ﻿#include "MyApplication.cpp"
 
 
-struct AppData {
-    EasyGL* app;
-    Scene* triangleScene;
-    Scene* sphereScene;
-    Scene* treeScene;
-};
-
-
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-        glfwSetWindowShouldClose(window, GL_TRUE);
-    }
-
-    if (key == GLFW_KEY_1 && action == GLFW_PRESS) {
-        AppData *data = (AppData*)glfwGetWindowUserPointer(window);
-        if (!data) return;
-		data->app->setActiveScene(data->triangleScene);
-    }
-
-    if (key == GLFW_KEY_2 && action == GLFW_PRESS) {
-        AppData* data = (AppData*)glfwGetWindowUserPointer(window);
-        if (!data) return;
-        data->app->setActiveScene(data->sphereScene);
-    }
-
-    if (key == GLFW_KEY_3&& action == GLFW_PRESS) {
-        AppData* data = (AppData*)glfwGetWindowUserPointer(window);
-        if (!data) return;
-        data->app->setActiveScene(data->treeScene);
-    }
-}
 
 
 float cycle(float time, float period) {
