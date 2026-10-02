@@ -1,7 +1,45 @@
 ﻿#include "EasyGL.h"
-#include "models/gift.h"
-#include "models/mytree.h"
+#include "models/sphere.h"
 #include "ShaderProgram.h"
+#include <cmath>
+
+struct AppData {
+    EasyGL* app;
+    Scene* triangleScene;
+    Scene* sphereScene;
+    Scene* treeScene;
+};
+
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+
+    if (key == GLFW_KEY_1 && action == GLFW_PRESS) {
+        AppData *data = (AppData*)glfwGetWindowUserPointer(window);
+        if (!data) return;
+		data->app->setActiveScene(data->triangleScene);
+    }
+
+    if (key == GLFW_KEY_2 && action == GLFW_PRESS) {
+        AppData* data = (AppData*)glfwGetWindowUserPointer(window);
+        if (!data) return;
+        data->app->setActiveScene(data->sphereScene);
+    }
+
+    if (key == GLFW_KEY_3&& action == GLFW_PRESS) {
+        AppData* data = (AppData*)glfwGetWindowUserPointer(window);
+        if (!data) return;
+        data->app->setActiveScene(data->treeScene);
+    }
+}
+
+
+float cycle(float time, float period) {
+	return fmod(time, period);
+};
 
 int main() {
     EasyGL app;
@@ -13,44 +51,36 @@ int main() {
         0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
     };
+
+    Scene triangleScene = Scene();
 	GameObject triangle = GameObject(points, { 3, 3 });
 	ShaderProgram triangleShaderProgram("shaders/basic.vert", "shaders/basic.frag");
 	triangle.setShaderProgram(&triangleShaderProgram);
+    triangleScene.addObject(triangle);
 
 
 
-    Scene triangleScene = Scene();
-	triangleScene.addObject(triangle);
+    Scene sphereScene = Scene();
+    GameObject sphere_object = GameObject(sphere, { 3, 3 });
+    ShaderProgram sphereShaderProgram("shaders/basic.vert", "shaders/basic.frag");
+    sphere_object.setShaderProgram(&sphereShaderProgram);
+    sphereScene.addObject(sphere_object);
 
-/*
-	// Tree and Gift scene
-    GLuint shaderProgram1 = app.createShaders("shaders/tree.vert", "shaders/basic.frag");
-    GameObject tree = app.createModel(mytree, { 3, 3 });
-	tree.setShaderProgram(shaderProgram1);
 
-    GLuint shaderProgram2 = app.createShaders("shaders/shifted.vert", "shaders/red.frag");
-    GLuint shaderProgram3 = app.createShaders("shaders/shifted2.vert", "shaders/blue.frag");
+	app.setActiveScene(&triangleScene);
+	app.addKeyCallback(key_callback);
 
-    GameObject gift_model1 = app.createModel(gift, { 3, 3 });
-    gift_model1.setShaderProgram(shaderProgram2);*/
+
+    AppData* data = new AppData{ &app, &triangleScene, &sphereScene };
+    glfwSetWindowUserPointer(app.getWindow(), data);
 
 
     while (app.running()) {
 		app.startFrame();
 
-		//square.draw();
-        //sphere_model.draw();
+        
+        //triangleShaderProgram.setVec3Variable("offset", cycle(glfwGetTime(), 2.0f) - 1, 0.0f, 0.0f);
 
-       /*tree.draw();
-
-        gift_model1.setShaderProgram(shaderProgram2);
-		gift_model1.draw();
-
-        gift_model1.setShaderProgram(shaderProgram3);
-        gift_model1.draw();
-        */
-
-        triangleScene.draw();
 
         app.endFrame();
     }

@@ -13,5 +13,5 @@ public:
 		}
 	}
 private:
-	std::vector<GameObject> objects;
+	std::vector<GameObject> objects = {};
 };

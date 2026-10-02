@@ -9,12 +9,25 @@ public:
 		this->fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentShaderFile);
 
 		this->shaderProgram = glCreateProgram();
-		glAttachShader(shaderProgram, fragmentShader);
-		glAttachShader(shaderProgram, vertexShader);
-		glLinkProgram(shaderProgram);
+		glAttachShader(this->shaderProgram, this->fragmentShader);
+		glAttachShader(this->shaderProgram, this->vertexShader);
+		glLinkProgram(this->shaderProgram);
 	}
+
 	GLuint getShaderProgram() const {
 		return this->shaderProgram;
+	}
+
+	void setVec3Variable(const GLchar *name, float v1, float v2, float v3) {
+		glUseProgram(this->shaderProgram);
+		int location = glGetUniformLocation(this->shaderProgram, name);
+		if (location == -1) {
+			std::cout << "Uniform variable " << name << " not found in shader program." << std::endl;
+		}
+		else {
+			glUniform3f(location, v1, v2, v3);
+		}
+		glUseProgram(0);
 	}
 private:
 	GLuint vertexShader;

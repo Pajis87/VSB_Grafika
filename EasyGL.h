@@ -53,6 +53,20 @@ public:
 		return 0;
 	}
 
+
+	void addKeyCallback(GLFWkeyfun callback) {
+		glfwSetKeyCallback(window, callback);
+	}
+
+	// umožní získat okno z venku (např. pro nastavení user pointeru nebo callbacku)
+	GLFWwindow* getWindow() {
+		return window;
+	}
+
+
+	void setActiveScene(Scene* scene) {
+		this->activeScene = scene;
+	}
 	
 
 	void startFrame() {
@@ -60,6 +74,10 @@ public:
 	}
 
 	void endFrame() {
+		if (this->activeScene != nullptr) {
+			this->activeScene->draw();
+		}
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -70,4 +88,5 @@ public:
 	}
 private:
 	GLFWwindow* window;
+	Scene* activeScene = nullptr;
 };
