@@ -15,6 +15,10 @@ public:
 	) {
 		this->shaderProgram = new ShaderProgram("Assets/Shaders/basic.vert", "Assets/Shaders/basic.frag");
 	}
+
+	void update() override {
+		this->position.x += 0.005f;
+	}
 };
 
 #endif

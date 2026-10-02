@@ -77,6 +77,8 @@ public:
 
 	void endFrame() {
 		if (this->activeScene != nullptr) {
+			this->activeScene->updateGameObjects();
+
 			this->activeScene->draw();
 		}
 

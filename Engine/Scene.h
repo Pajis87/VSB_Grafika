@@ -8,16 +8,23 @@
 
 class Scene {
 public:
-	void addObject(const GameObject& object) {
+	void addObject(GameObject* object) {
 		objects.push_back(object);
 	}
+
+	void updateGameObjects() {
+		for (GameObject* object : objects) {
+			object->update();
+		}
+	}
+
 	void draw() {
-		for (GameObject object : objects) {
-			object.draw();
+		for (GameObject* object : objects) {
+			object->draw();
 		}
 	}
 private:
-	std::vector<GameObject> objects = {};
+	std::vector<GameObject*> objects = {};
 };
 
 #endif

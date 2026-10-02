@@ -21,7 +21,7 @@ public:
 	}
 
 	void setupGameObjects() {
-		scenes["triangle"]->addObject(Triangle());
+		scenes["triangle"]->addObject(new Triangle());
 	}
 
 	void run() {

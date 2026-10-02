@@ -8,6 +8,8 @@
 
 class GameObject {
 public:
+	Vector3 position;
+	Vector3 rotation;
 	
 	void setShaderProgram(ShaderProgram *shaderProgram) {
 		this->shaderProgram = shaderProgram;
@@ -16,9 +18,15 @@ public:
 		this->stride = stride;
 	}
 	void draw() {
+		this->shaderProgram->setVec3Variable("offset", position.x, position.y, position.z);
+
 		glUseProgram(shaderProgram->getShaderProgram());
 		glBindVertexArray(vao);
 		glDrawArrays(GL_TRIANGLES, 0, vertexData.size_bytes() / stride);
+	}
+
+	virtual void update() {
+		
 	}
 
 protected:
@@ -60,8 +68,6 @@ protected:
 		}
 		glBindBuffer(GL_ARRAY_BUFFER, this->vbo);
 	}
-
-	Vector3 position;
 
 	static int objectIndex;
 	GLuint vao;
