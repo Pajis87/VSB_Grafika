@@ -1,6 +1,7 @@
 // This file was mostly created by Pavel Brazda - BRA0241 (exceptions are annotated)
 
 #include "Application.h"
+#include "Assets/models/mytree.h"
 
 
 
@@ -90,5 +91,38 @@ void Application::run() {
 	while (this->running()) {
 		this->startFrame();
 		this->endFrame();
+	}
+}
+
+
+
+
+
+
+
+
+
+void Application::setupScenes() {
+	Scene* scene = new Scene();
+	scenes["triangle"] = scene;
+
+	this->setActiveScene(scene);
+}
+void Application::setupShaders() {
+	ShaderProgram* shaderProgram = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/basic.frag");
+	shaderPrograms.push_back(shaderProgram);
+}
+void Application::setupDrawableObjects() {
+	float points[] = {
+		0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+	   -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+	};
+	Model* model = new Model(points, {3, 3});
+	DrawableObject* drawableObject = new DrawableObject(model, shaderPrograms[0]);
+	drawableObjects.push_back(drawableObject);
+
+	if (this->activeScene != nullptr) {
+		this->activeScene->addObject(drawableObject);
 	}
 }

@@ -5,8 +5,10 @@
 int main() {
     Application* app = new Application();
 
-	app->init(800, 600, "ZPG");
-
+	app->init(800, 800, "ZPG");
+	app->setupScenes();
+	app->setupShaders();
+	app->setupDrawableObjects();
     app->run();
 
     return 0;

@@ -2,6 +2,10 @@
 
 #include "DrawableObject.h"
 
+DrawableObject::DrawableObject(Model* model, ShaderProgram* shaderProgram) {
+	this->model = model;
+	this->shaderProgram = shaderProgram;
+}
 
 void DrawableObject::setShaderProgram(ShaderProgram *shaderProgram) {
 	this->shaderProgram = shaderProgram;

@@ -3,6 +3,8 @@
 #ifndef EASY_GL_H
 #define EASY_GL_H
 
+#include <map>
+
 #include "Scene.h"
 
 class Application {
@@ -15,9 +17,18 @@ public:
 	void endFrame();
 	bool running();
 	void run();
+
+	void setupScenes();
+	void setupShaders();
+	void setupDrawableObjects();
+
 private:
 	GLFWwindow* window;
 	Scene* activeScene;
+
+	std::map<std::string, Scene*> scenes;
+	std::vector<ShaderProgram*> shaderPrograms;
+	std::vector<DrawableObject*> drawableObjects;
 };
 
 #endif
