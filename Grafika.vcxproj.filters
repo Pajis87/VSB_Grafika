@@ -9,9 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Engine">
-      <UniqueIdentifier>{e40d3f1e-f049-4b7b-a028-da9223732f5e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Assets">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -22,37 +19,8 @@
     <Filter Include="Assets\shaders">
       <UniqueIdentifier>{f2ed5c30-2203-43f3-a686-43d82ad9bbbe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Assets\GameObjects">
-      <UniqueIdentifier>{d7eab7a0-8908-4991-ae2a-23b729267f3f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Grafika.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MyApplication.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\EasyGL.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\GameObject.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\gl_includer.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Scene.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\ShaderProgram.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Vector3.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Assets\models\gift.h">
       <Filter>Assets\models</Filter>
     </ClInclude>
@@ -62,26 +30,29 @@
     <ClInclude Include="Assets\models\sphere.h">
       <Filter>Assets\models</Filter>
     </ClInclude>
-    <ClInclude Include="Assets\GameObjects\Triangle.h">
-      <Filter>Assets\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Assets\GameObjects\Sphere.h">
-      <Filter>Assets\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Assets\GameObjects\Tree.h">
-      <Filter>Assets\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Assets\models\mybush.h">
       <Filter>Assets\models</Filter>
-    </ClInclude>
-    <ClInclude Include="Assets\GameObjects\Bush.h">
-      <Filter>Assets\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Assets\models\login.h">
       <Filter>Assets\models</Filter>
     </ClInclude>
-    <ClInclude Include="Assets\GameObjects\Login.h">
-      <Filter>Assets\GameObjects</Filter>
+    <ClInclude Include="Application.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObject.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="gl_includer.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -94,5 +65,31 @@
     <None Include="Assets\shaders\gray.frag">
       <Filter>Assets\shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObject.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="MyApplication.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

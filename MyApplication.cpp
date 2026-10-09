@@ -1,5 +1,5 @@
 // This file was created by Pavel Brazda - BRA0241
-
+/*
 #ifndef MY_APPLICATION_H
 #define MY_APPLICATION_H
 
@@ -115,4 +115,4 @@ private:
 	std::map<std::string, Scene*> scenes;
 };
 
-#endif
+#endif*/
