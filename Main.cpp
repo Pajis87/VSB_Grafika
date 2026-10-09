@@ -3,12 +3,13 @@
 #include "Application.h"
 
 int main() {
-    Application* app = new Application();
+    Application* app = Application::getInstance();
 
 	app->init(800, 800, "ZPG");
 	app->setupScenes();
 	app->setupShaders();
 	app->setupDrawableObjects();
+	app->setupCallbacks();
     app->run();
 
     return 0;

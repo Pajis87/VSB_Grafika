@@ -9,6 +9,8 @@
 
 class Application {
 public:
+	static Application* getInstance();
+
 	int init(int width, int height, const char* title);
 	void addKeyCallback(GLFWkeyfun callback);
 	GLFWwindow* getWindow();
@@ -18,11 +20,16 @@ public:
 	bool running();
 	void run();
 
+	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
 	void setupScenes();
 	void setupShaders();
 	void setupDrawableObjects();
+	void setupCallbacks();
 
 private:
+	Application() = default;
+	static Application* instance;
 	GLFWwindow* window;
 	Scene* activeScene;
 

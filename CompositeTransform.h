@@ -12,7 +12,6 @@ private:
 public:
     void add(Transform* transform) {
         transformations.push_back(transform);
-		printf("Added transformation. Total transformations: %zu\n", transformations.size());
     }
 
     glm::mat4 getMatrix() override {

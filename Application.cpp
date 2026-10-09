@@ -4,6 +4,14 @@
 #include "Triangle.h"
 #include "Assets/models/mytree.h"
 
+Application* Application::instance = nullptr;
+Application* Application::getInstance() {
+	if (instance == nullptr) {
+		instance = new Application();
+	}
+	return instance;
+}
+
 
 
 int Application::init(int width, int height, const char* title) {
@@ -104,10 +112,11 @@ void Application::run() {
 
 
 void Application::setupScenes() {
-	Scene* scene = new Scene();
-	scenes["triangle"] = scene;
+	Scene* triangle = new Scene();
+	scenes["triangle"] = triangle;
+	scenes["forest"] = new Scene();
 
-	this->setActiveScene(scene);
+	this->setActiveScene(triangle);
 }
 void Application::setupShaders() {
 	ShaderProgram* shaderProgram = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/basic.frag");
@@ -121,3 +130,28 @@ void Application::setupDrawableObjects() {
 		this->activeScene->addObject(drawableObject);
 	}
 }
+
+void Application::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+		glfwSetWindowShouldClose(window, GL_TRUE);
+	}
+
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS) {
+		setActiveScene(scenes.at("triangle"));
+	}
+
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS) {
+		setActiveScene(scenes.at("forest"));
+	}
+}
+
+void ss(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	Application::getInstance()->keyCallback(window, key, scancode, action, mods);
+}
+
+void Application::setupCallbacks() {
+	glfwSetKeyCallback(window, ss);
+}
+
