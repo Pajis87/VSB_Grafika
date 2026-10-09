@@ -11,6 +11,8 @@ void DrawableObject::setShaderProgram(ShaderProgram *shaderProgram) {
 	this->shaderProgram = shaderProgram;
 }
 void DrawableObject::draw() {
+	this->shaderProgram->setVariable("modelMatrix", transform.getMatrix());
+
 	this->shaderProgram->useShaderProgram();
 	model->draw();
 	glUseProgram(0);

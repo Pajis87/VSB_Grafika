@@ -3,24 +3,18 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include "../../Engine/GameObject.h"
+#include "DrawableObject.h"
+#include "ShaderProgram.h"
+#include "Rotation.h"
 
-class Triangle : public GameObject {
+class Triangle : public DrawableObject {
 public:
-	Triangle() : GameObject(
-		std::span<const float>({
-			0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-			0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
-		}),
-		std::vector<int>({3, 3})
-	) {
-		this->shaderProgram = new ShaderProgram("Assets/Shaders/basic.vert", "Assets/Shaders/basic.frag");
-	}
+	Triangle(ShaderProgram* shaderProgram);
 
-	void update() override {
-		this->rotation.y += 0.025f;
-	}
+	void update() override;
+private:
+	float y_rotation_angle = 0.0f;
+	Rotation* y_rotation_transform;
 };
 
 #endif
