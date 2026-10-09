@@ -8,11 +8,8 @@
 class ShaderProgram {
 public:
 	ShaderProgram(const char* vertexShaderFile, const char* fragmentShaderFile);
-	GLuint getShaderProgram() const;
-	void setVariable(const GLchar* name, float v1);
-	void setVariable(const GLchar* name, float v1, float v2);
-	void setVariable(const GLchar* name, float v1, float v2, float v3);
-
+	void setVariable(const GLchar* name, glm::mat4 matrix);
+	void useShaderProgram();
 private:
 	GLuint vertexShader;
 	GLuint fragmentShader;

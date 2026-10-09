@@ -2,6 +2,7 @@
 
 #include "ShaderProgram.h"
 
+
 ShaderProgram::ShaderProgram(const char* vertexShaderFile, const char* fragmentShaderFile) {
 	this->vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexShaderFile);
 	this->fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentShaderFile);
@@ -12,43 +13,25 @@ ShaderProgram::ShaderProgram(const char* vertexShaderFile, const char* fragmentS
 	glLinkProgram(this->shaderProgram);
 }
 
-GLuint ShaderProgram::getShaderProgram() const { // TODO: this is very wrong, I should have userProgram()
-	return this->shaderProgram;
+
+
+void ShaderProgram::setVariable(const GLchar* name, glm::mat4 matrix) {
+	glUseProgram(this->shaderProgram);
+	int location = glGetUniformLocation(this->shaderProgram, name);
+	if (location == -1) {
+		std::cout << "Uniform variable " << name << " not found in shader program." << std::endl;
+	}
+	else {
+		glUniformMatrix4fv(location, 1, GL_FALSE, &matrix[0][0]);
+	}
+	glUseProgram(0);
 }
 
-void ShaderProgram::setVariable(const GLchar* name, float v1) {
+void ShaderProgram::useShaderProgram() {
 	glUseProgram(this->shaderProgram);
-	int location = glGetUniformLocation(this->shaderProgram, name);
-	if (location == -1) {
-		std::cout << "Uniform variable " << name << " not found in shader program." << std::endl;
-	}
-	else {
-		glUniform1f(location, v1);
-	}
-	glUseProgram(0);
 }
-void ShaderProgram::setVariable(const GLchar* name, float v1, float v2) {
-	glUseProgram(this->shaderProgram);
-	int location = glGetUniformLocation(this->shaderProgram, name);
-	if (location == -1) {
-		std::cout << "Uniform variable " << name << " not found in shader program." << std::endl;
-	}
-	else {
-		glUniform2f(location, v1, v2);
-	}
-	glUseProgram(0);
-}
-void ShaderProgram::setVariable(const GLchar* name, float v1, float v2, float v3) {
-	glUseProgram(this->shaderProgram);
-	int location = glGetUniformLocation(this->shaderProgram, name);
-	if (location == -1) {
-		std::cout << "Uniform variable " << name << " not found in shader program." << std::endl;
-	}
-	else {
-		glUniform3f(location, v1, v2, v3);
-	}
-	glUseProgram(0);
-}
+
+
 
 // ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ vvv
 GLuint ShaderProgram::createShaderFromFile(GLenum shaderType, const char* shaderFile) {
