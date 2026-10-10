@@ -8,6 +8,7 @@ int main() {
 	app->init(800, 800, "ZPG");
 	app->setupScenes();
 	app->setupShaders();
+	app->setupModels();
 	app->setupDrawableObjects();
 	app->setupCallbacks();
     app->run();

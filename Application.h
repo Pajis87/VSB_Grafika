@@ -20,22 +20,25 @@ public:
 	bool running();
 	void run();
 
-	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 	void setupScenes();
 	void setupShaders();
+	void setupModels();
 	void setupDrawableObjects();
 	void setupCallbacks();
 
+	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
 private:
-	Application() = default;
+	Application();
 	static Application* instance;
 	GLFWwindow* window;
 	Scene* activeScene;
 
 	std::map<std::string, Scene*> scenes;
-	std::vector<ShaderProgram*> shaderPrograms;
-	std::vector<DrawableObject*> drawableObjects;
+	std::map<std::string, ShaderProgram*> shaderPrograms;
+	std::map<std::string, DrawableObject*> drawableObjects;
+	std::map<std::string, Model*> models;
 };
 
 #endif

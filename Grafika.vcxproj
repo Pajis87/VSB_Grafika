@@ -144,12 +144,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Assets\models\bush.h" />
     <ClInclude Include="Assets\models\gift.h" />
     <ClInclude Include="Assets\models\login.h" />
-    <ClInclude Include="Assets\models\mybush.h" />
-    <ClInclude Include="Assets\models\mytree.h" />
     <ClInclude Include="Assets\models\sphere.h" />
-    <ClInclude Include="Assets\models\triangle.h" />
+    <ClInclude Include="Assets\models\tree.h" />
     <ClInclude Include="CompositeTransform.h" />
     <ClInclude Include="DrawableObject.h" />
     <ClInclude Include="gl_includer.h" />
@@ -161,11 +160,13 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Translation.h" />
     <ClInclude Include="Triangle.h" />
+    <ClInclude Include="TriangleSwitched.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag" />
     <None Include="Assets\shaders\basic.vert" />
     <None Include="Assets\shaders\gray.frag" />
+    <None Include="Assets\shaders\green.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -181,6 +182,7 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Translation.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="TriangleSwtiched.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

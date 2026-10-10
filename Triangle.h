@@ -9,7 +9,7 @@
 
 class Triangle : public DrawableObject {
 public:
-	Triangle(ShaderProgram* shaderProgram);
+	Triangle(Model* model, ShaderProgram* shaderProgram);
 
 	void update() override;
 private:

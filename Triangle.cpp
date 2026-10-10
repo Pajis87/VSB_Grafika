@@ -1,9 +1,10 @@
 #include "Triangle.h"
-#include "Assets/models/triangle.h"
+#include "Rotation.h"
+#include "Translation.h"
 
-
-Triangle::Triangle(ShaderProgram* shaderProgram): DrawableObject(new Model(points, {3, 3}), shaderProgram) {
-	y_rotation_transform = new Rotation(0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+Triangle::Triangle(Model* model, ShaderProgram* shaderProgram) : DrawableObject(model, shaderProgram) {
+	transform.add(new Translation(glm::vec3(0.4f, 0.0f, 0.0f)));
+	y_rotation_transform = new Rotation(0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
 	transform.add(y_rotation_transform);
 }
 
