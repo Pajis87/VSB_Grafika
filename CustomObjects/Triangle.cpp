@@ -1,6 +1,6 @@
 #include "Triangle.h"
-#include "Rotation.h"
-#include "Translation.h"
+#include "../Rotation.h"
+#include "../Translation.h"
 
 Triangle::Triangle(Model* model, ShaderProgram* shaderProgram) : DrawableObject(model, shaderProgram) {
 	transform.add(new Translation(glm::vec3(0.4f, 0.0f, 0.0f)));

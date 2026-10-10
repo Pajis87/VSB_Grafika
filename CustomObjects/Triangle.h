@@ -3,9 +3,9 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include "DrawableObject.h"
-#include "ShaderProgram.h"
-#include "Rotation.h"
+#include "../DrawableObject.h"
+#include "../ShaderProgram.h"
+#include "../Rotation.h"
 
 class Triangle : public DrawableObject {
 public:

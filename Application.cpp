@@ -1,11 +1,17 @@
 // This file was mostly created by Pavel Brazda - BRA0241 (exceptions are annotated)
 
 #include "Application.h"
-#include "Triangle.h"
-#include "TriangleSwitched.h"
+#include "CustomObjects/Triangle.h"
+#include "CustomObjects/TriangleSwitched.h"
+#include "CustomObjects/Sun.h"
+#include "CustomObjects/Earth.h"
+#include "CustomObjects/Moon.h"
 #include "Assets/models/sphere.h"
 #include "Assets/models/tree.h"
 #include "Assets/models/bush.h"
+#include "Assets/models/earth.h"
+#include "Assets/models/sun.h"
+#include "Assets/models/moon.h"
 #include "Rotation.h"
 #include "Translation.h"
 #include "Scale.h"
@@ -120,13 +126,13 @@ void Application::setupScenes() {
 	scenes["triangle_switched"] = new Scene();
 	scenes["sphere"] = new Scene();
 	scenes["forest"] = new Scene();
+	scenes["solar_system"] = new Scene();
 
 	this->setActiveScene(triangle);
 }
 
 void Application::setupShaders() {
 	shaderPrograms["basic"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/basic.frag");;
-
 	shaderPrograms["green"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/green.frag");
 }
 
@@ -137,22 +143,13 @@ void Application::setupModels() {
 	   -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
 	};
 
-	// Triangle model
-	Model* triangleModel = new Model(points, {3, 3});
-	models["triangle"] = triangleModel;
-
-
-	// Sphere model
-	Model* sphereModel = new Model(sphere, { 3, 3 });
-	models["sphere"] = sphereModel;
-
-	// Tree model
-	Model* treeModel = new Model(tree, {3, 3});
-	models["tree"] = treeModel;
-
-	//Bush model
-	Model* bushModel = new Model(bush, {3, 3});
-	models["bush"] = bushModel;
+	models["triangle"] = new Model(points, { 3, 3 });
+	models["sphere"] = new Model(sphere, { 3, 3 });
+	models["tree"] = new Model(tree, { 3, 3 });
+	models["bush"] = new Model(bush, { 3, 3 });
+	models["sun"] = new Model(sun, { 3, 3, 3 });
+	models["earth"] = new Model(earth, { 3, 3, 3 });
+	models["moon"] = new Model(moon, { 3, 3, 3 });
 }
 
 void Application::setupDrawableObjects() {
@@ -204,13 +201,19 @@ void Application::setupDrawableObjects() {
 			scenes["forest"]->addObject(bush);
 		}
 	}
-	/*DrawableObject* tree = new DrawableObject(models["tree"], shaderPrograms["basic"]);
-	drawableObjects["tree"] = tree;
-	scenes["forest"]->addObject(tree);
 
-	DrawableObject* bush = new DrawableObject(models["bush"], shaderPrograms["basic"]);
-	drawableObjects["bush"] = bush;
-	scenes["forest"]->addObject(bush);*/
+	//Solar system scene
+	DrawableObject* sun = new Sun(models["sun"], shaderPrograms["basic"], -25.0f, -20.0f);
+	drawableObjects["sun"] = sun;
+	scenes["solar_system"]->addObject(sun);
+
+	DrawableObject* earth = new Earth(models["earth"], shaderPrograms["basic"], (Sun*)sun, 23.5f);
+	drawableObjects["earth"] = earth;
+	scenes["solar_system"]->addObject(earth);
+
+	DrawableObject* moon = new Moon(models["moon"], shaderPrograms["basic"], (Sun*)sun, (Earth*)earth);
+	drawableObjects["moon"] = moon;
+	scenes["solar_system"]->addObject(moon);
 }
 
 
@@ -243,6 +246,10 @@ void Application::keyCallback(GLFWwindow* window, int key, int scancode, int act
 
 	if (key == GLFW_KEY_4 && action == GLFW_PRESS) {
 		setActiveScene(scenes.at("forest"));
+	}
+
+	if (key == GLFW_KEY_5 && action == GLFW_PRESS) {
+		setActiveScene(scenes.at("solar_system"));
 	}
 }
 

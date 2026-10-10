@@ -19,6 +19,12 @@
     <Filter Include="Assets\shaders">
       <UniqueIdentifier>{f2ed5c30-2203-43f3-a686-43d82ad9bbbe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zdrojové soubory\CustomObjects">
+      <UniqueIdentifier>{7c35d311-1288-441a-b4af-57130cd0b268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hlavičkové soubory\CustomObjects">
+      <UniqueIdentifier>{90dd06d0-40f1-47a0-9fb0-50a02cbe7178}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assets\models\gift.h">
@@ -63,17 +69,35 @@
     <ClInclude Include="CompositeTransform.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="TriangleSwitched.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
     <ClInclude Include="Assets\models\tree.h">
       <Filter>Assets\models</Filter>
     </ClInclude>
     <ClInclude Include="Assets\models\bush.h">
       <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\earth.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\moon.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\sun.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomObjects\Sun.h">
+      <Filter>Hlavičkové soubory\CustomObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomObjects\Triangle.h">
+      <Filter>Hlavičkové soubory\CustomObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomObjects\TriangleSwitched.h">
+      <Filter>Hlavičkové soubory\CustomObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomObjects\Earth.h">
+      <Filter>Hlavičkové soubory\CustomObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomObjects\Moon.h">
+      <Filter>Hlavičkové soubory\CustomObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -127,11 +151,20 @@
     <ClCompile Include="Scale.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>Zdrojové soubory</Filter>
+    <ClCompile Include="CustomObjects\Sun.cpp">
+      <Filter>Zdrojové soubory\CustomObjects</Filter>
     </ClCompile>
-    <ClCompile Include="TriangleSwtiched.cpp">
-      <Filter>Zdrojové soubory</Filter>
+    <ClCompile Include="CustomObjects\Triangle.cpp">
+      <Filter>Zdrojové soubory\CustomObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomObjects\TriangleSwtiched.cpp">
+      <Filter>Zdrojové soubory\CustomObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomObjects\Earth.cpp">
+      <Filter>Zdrojové soubory\CustomObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomObjects\Moon.cpp">
+      <Filter>Zdrojové soubory\CustomObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

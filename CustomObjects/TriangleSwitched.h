@@ -3,9 +3,9 @@
 #ifndef TRIANGLE_SWITCHED_H
 #define TRIANGLE_SWITCHED_H
 
-#include "DrawableObject.h"
-#include "ShaderProgram.h"
-#include "Rotation.h"
+#include "../DrawableObject.h"
+#include "../ShaderProgram.h"
+#include "../Rotation.h"
 
 class TriangleSwitched : public DrawableObject {
 public:

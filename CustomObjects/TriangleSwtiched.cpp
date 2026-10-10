@@ -1,6 +1,6 @@
 #include "TriangleSwitched.h"
-#include "Rotation.h"
-#include "Translation.h"
+#include "../Rotation.h"
+#include "../Translation.h"
 
 
 TriangleSwitched::TriangleSwitched(Model* model, ShaderProgram* shaderProgram) : DrawableObject(model, shaderProgram) {

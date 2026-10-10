@@ -145,11 +145,19 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Assets\models\bush.h" />
+    <ClInclude Include="Assets\models\earth.h" />
     <ClInclude Include="Assets\models\gift.h" />
     <ClInclude Include="Assets\models\login.h" />
+    <ClInclude Include="Assets\models\moon.h" />
     <ClInclude Include="Assets\models\sphere.h" />
+    <ClInclude Include="Assets\models\sun.h" />
     <ClInclude Include="Assets\models\tree.h" />
     <ClInclude Include="CompositeTransform.h" />
+    <ClInclude Include="CustomObjects\Earth.h" />
+    <ClInclude Include="CustomObjects\Moon.h" />
+    <ClInclude Include="CustomObjects\Sun.h" />
+    <ClInclude Include="CustomObjects\Triangle.h" />
+    <ClInclude Include="CustomObjects\TriangleSwitched.h" />
     <ClInclude Include="DrawableObject.h" />
     <ClInclude Include="gl_includer.h" />
     <ClInclude Include="Model.h" />
@@ -159,8 +167,6 @@
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Translation.h" />
-    <ClInclude Include="Triangle.h" />
-    <ClInclude Include="TriangleSwitched.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag" />
@@ -170,6 +176,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="CustomObjects\Earth.cpp" />
+    <ClCompile Include="CustomObjects\Moon.cpp" />
+    <ClCompile Include="CustomObjects\Sun.cpp" />
+    <ClCompile Include="CustomObjects\Triangle.cpp" />
+    <ClCompile Include="CustomObjects\TriangleSwtiched.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
     <ClCompile Include="glad.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -181,8 +192,6 @@
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Translation.cpp" />
-    <ClCompile Include="Triangle.cpp" />
-    <ClCompile Include="TriangleSwtiched.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
