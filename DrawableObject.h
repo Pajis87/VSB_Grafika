@@ -7,6 +7,7 @@
 #include "ShaderProgram.h"
 #include "Model.h"
 #include "CompositeTransform.h"
+#include "Camera.h"
 
 class DrawableObject {
 public:
@@ -14,6 +15,7 @@ public:
 
 	DrawableObject(Model* model, ShaderProgram* shaderProgram);
 	void setShaderProgram(ShaderProgram* shaderProgram);
+	void setCamera(Camera* camera);
 	void draw();
 	virtual void start();
 	virtual void update();

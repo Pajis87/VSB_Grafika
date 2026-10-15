@@ -25,6 +25,7 @@ public:
 	void setupShaders();
 	void setupModels();
 	void setupDrawableObjects();
+	void setupCameras();
 	void setupCallbacks();
 
 	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);

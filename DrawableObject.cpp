@@ -10,6 +10,12 @@ DrawableObject::DrawableObject(Model* model, ShaderProgram* shaderProgram) {
 void DrawableObject::setShaderProgram(ShaderProgram *shaderProgram) {
 	this->shaderProgram = shaderProgram;
 }
+
+
+void DrawableObject::setCamera(Camera* camera) {
+	this->shaderProgram->setCamera(camera);
+}
+
 void DrawableObject::draw() {
 	this->shaderProgram->setVariable("modelMatrix", transform.getMatrix());
 

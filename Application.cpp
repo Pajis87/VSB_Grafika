@@ -15,6 +15,7 @@
 #include "Assets/models/login.h"
 #include "Rotation.h"
 #include "Translation.h"
+#include "Camera.h"
 #include "Scale.h"
 
 Application* Application::instance = nullptr;
@@ -233,6 +234,12 @@ void Application::setupDrawableObjects() {
 	login->transform.add(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
 	drawableObjects["login"] = login;
 	scenes["login"]->addObject(login);
+}
+
+void Application::setupCameras() {
+	Camera* camera = new Camera();
+	scenes["triangle"]->addCamera(camera);
+	scenes["triangle"]->setActiveCamera(camera);
 }
 
 

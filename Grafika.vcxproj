@@ -152,6 +152,7 @@
     <ClInclude Include="Assets\models\sphere.h" />
     <ClInclude Include="Assets\models\sun.h" />
     <ClInclude Include="Assets\models\tree.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="CompositeTransform.h" />
     <ClInclude Include="CustomObjects\Earth.h" />
     <ClInclude Include="CustomObjects\Moon.h" />
@@ -177,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CompositeTransform.cpp" />
     <ClCompile Include="CustomObjects\Earth.cpp" />
     <ClCompile Include="CustomObjects\Moon.cpp" />

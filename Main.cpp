@@ -10,6 +10,7 @@ int main() {
 	app->setupShaders();
 	app->setupModels();
 	app->setupDrawableObjects();
+	app->setupCameras();
 	app->setupCallbacks();
     app->run();
 

@@ -31,6 +31,12 @@ void ShaderProgram::useShaderProgram() {
 	glUseProgram(this->shaderProgram);
 }
 
+void ShaderProgram::setCamera(Camera* camera) {
+	this->camera = camera;
+	setVariable("viewMatrix", camera->getViewMatrix());
+	setVariable("projectionMatrix", camera->getProjectionMatrix());
+}
+
 
 
 GLuint ShaderProgram::createShaderFromFile(GLenum shaderType, const char* shaderFile) {

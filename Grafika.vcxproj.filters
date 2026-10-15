@@ -99,6 +99,9 @@
     <ClInclude Include="CustomObjects\Moon.h">
       <Filter>Hlavičkové soubory\CustomObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag">
@@ -164,6 +167,9 @@
       <Filter>Zdrojové soubory\CustomObjects</Filter>
     </ClCompile>
     <ClCompile Include="CompositeTransform.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
   </ItemGroup>
