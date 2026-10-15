@@ -173,9 +173,11 @@
     <None Include="Assets\shaders\basic.vert" />
     <None Include="Assets\shaders\gray.frag" />
     <None Include="Assets\shaders\green.frag" />
+    <None Include="Assets\shaders\tree.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="CompositeTransform.cpp" />
     <ClCompile Include="CustomObjects\Earth.cpp" />
     <ClCompile Include="CustomObjects\Moon.cpp" />
     <ClCompile Include="CustomObjects\Sun.cpp" />
@@ -185,12 +187,10 @@
     <ClCompile Include="glad.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="MyApplication.cpp" />
     <ClCompile Include="Rotation.cpp" />
     <ClCompile Include="Scale.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
-    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Translation.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

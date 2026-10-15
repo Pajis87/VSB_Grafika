@@ -113,6 +113,9 @@
     <None Include="Assets\shaders\green.frag">
       <Filter>Assets\shaders</Filter>
     </None>
+    <None Include="Assets\shaders\tree.vert">
+      <Filter>Assets\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -130,16 +133,10 @@
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="MyApplication.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
     <ClCompile Include="glad.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
     <ClCompile Include="Translation.cpp">
@@ -165,6 +162,9 @@
     </ClCompile>
     <ClCompile Include="CustomObjects\Moon.cpp">
       <Filter>Zdrojové soubory\CustomObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeTransform.cpp">
+      <Filter>Zdrojové soubory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

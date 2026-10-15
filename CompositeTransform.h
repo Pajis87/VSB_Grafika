@@ -10,17 +10,8 @@ class CompositeTransform : public Transform {
 private:
     std::vector<Transform*> transformations;
 public:
-    void add(Transform* transform) {
-        transformations.push_back(transform);
-    }
-
-    glm::mat4 getMatrix() override {
-        glm::mat4 result = glm::mat4(1.0f);
-        for (Transform* t : transformations) {
-            result = result * t->getMatrix();
-        }
-        return result;
-    }
+    void add(Transform* transform);
+    glm::mat4 getMatrix() override;
 };
 
 #endif

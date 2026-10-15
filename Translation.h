@@ -8,13 +8,8 @@
 
 class Translation : public Transform {
 public:
-    Translation(const glm::vec3& offset) {
-        this->translation = offset;
-    }
-
-    glm::mat4 getMatrix() override {
-        return glm::translate(glm::mat4(1.0f), translation);
-    }
+    Translation(const glm::vec3& offset);
+    glm::mat4 getMatrix() override;
 private:
     glm::vec3 translation;
 };

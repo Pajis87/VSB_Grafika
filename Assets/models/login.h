@@ -4,8 +4,6 @@
 // Vertex format: x, y, z, nx, ny, nz
 // Draw using: glDrawArrays(GL_TRIANGLES, 0, TEXT_VERTEX_COUNT)
 
-const unsigned int TEXT_VERTEX_COUNT = 19908;
-
 const float login[] = {
     1.61900008f, 0.38200003f, 0.27000001f, 0.00000000f, 0.00000000f, 1.00000000f,
     1.61900008f, -0.30000001f, 0.27000001f, 0.00000000f, 0.00000000f, 1.00000000f,

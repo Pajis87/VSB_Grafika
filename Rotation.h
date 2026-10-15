@@ -8,16 +8,9 @@
 
 class Rotation : public Transform {
 public:
-    Rotation(float angle, const glm::vec3& axis) {
-		this->angleDegrees = angle;
-		this->axis = axis;
-    }
-
-    void setAngle(float angle) { angleDegrees = angle; }
-
-    glm::mat4 getMatrix() override {
-        return glm::rotate(glm::mat4(1.0f), glm::radians(angleDegrees), axis);
-    }
+    Rotation(float angle, const glm::vec3& axis);
+    void setAngle(float angle);
+    glm::mat4 getMatrix() override;
 private:
     float angleDegrees;
     glm::vec3 axis;

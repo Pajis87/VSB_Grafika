@@ -8,17 +8,9 @@
 
 class Scale : public Transform {
 public:
-    Scale(const glm::vec3& factors) {
-        this->factors = factors;
-    }
-
-    void setFactors(const glm::vec3& factors) {
-        this->factors = factors;
-    }
-
-    glm::mat4 getMatrix() override {
-        return glm::scale(glm::mat4(1.0f), factors);
-    }
+    Scale(const glm::vec3& factors);
+    void setFactors(const glm::vec3& factors);
+    glm::mat4 getMatrix() override;
 private:
     glm::vec3 factors;
 };

@@ -1,4 +1,4 @@
-// This file was mostly created by Pavel Brazda - BRA0241 (exceptions are annotated)
+// This file was created by Pavel Brazda - BRA0241
 
 #include "Application.h"
 #include "CustomObjects/Triangle.h"
@@ -12,6 +12,7 @@
 #include "Assets/models/earth.h"
 #include "Assets/models/sun.h"
 #include "Assets/models/moon.h"
+#include "Assets/models/login.h"
 #include "Rotation.h"
 #include "Translation.h"
 #include "Scale.h"
@@ -27,7 +28,6 @@ Application* Application::getInstance() {
 Application::Application() : window(nullptr), activeScene(nullptr) {}
 
 int Application::init(int width, int height, const char* title) {
-	// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ AND EDITED vvv
 	// Initialize GLFW
 	if (!glfwInit())
 		exit(EXIT_FAILURE);
@@ -63,7 +63,6 @@ int Application::init(int width, int height, const char* title) {
 	int major, minor, revision;
 	glfwGetVersion(&major, &minor, &revision);
 	printf("Using GLFW %i.%i.%i\n", major, minor, revision);
-	// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ AND EDITED ^^^
 
 
 
@@ -127,13 +126,16 @@ void Application::setupScenes() {
 	scenes["sphere"] = new Scene();
 	scenes["forest"] = new Scene();
 	scenes["solar_system"] = new Scene();
+	scenes["login"] = new Scene();
 
 	this->setActiveScene(triangle);
 }
 
 void Application::setupShaders() {
-	shaderPrograms["basic"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/basic.frag");;
+	shaderPrograms["basic"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["green"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/green.frag");
+	shaderPrograms["tree"] = new ShaderProgram("Assets/shaders/tree.vert", "Assets/shaders/basic.frag");
+	shaderPrograms["gray"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/gray.frag");
 }
 
 void Application::setupModels() {
@@ -150,23 +152,32 @@ void Application::setupModels() {
 	models["sun"] = new Model(sun, { 3, 3, 3 });
 	models["earth"] = new Model(earth, { 3, 3, 3 });
 	models["moon"] = new Model(moon, { 3, 3, 3 });
+	models["login"] = new Model(login, { 3, 3});
 }
 
 void Application::setupDrawableObjects() {
+	DrawableObject* small_login = new DrawableObject(models["login"], shaderPrograms["gray"]);
+	small_login->transform.add(new Translation(glm::vec3(0.8f, -0.9f, -0.8f)));
+	small_login->transform.add(new Scale(glm::vec3(0.1f, 0.1f, 0.1f)));
+	drawableObjects["login"] = small_login;
+
 	// Triangle scene
 	DrawableObject* triangle = new Triangle(models["triangle"], shaderPrograms["basic"]);
 	drawableObjects["triangle"] = triangle;
 	scenes["triangle"]->addObject(triangle);
+	scenes["triangle"]->addObject(small_login);
 
 	// Triangle switched scene
-	DrawableObject* triangleSwitched = new TriangleSwitched(models["triangle"], shaderPrograms["basic"]); // TODO: change to some getter method to check that the model etc. exists
+	DrawableObject* triangleSwitched = new TriangleSwitched(models["triangle"], shaderPrograms["basic"]);
 	drawableObjects["triangle_switched"] = triangleSwitched;
 	scenes["triangle_switched"]->addObject(triangleSwitched);
+	scenes["triangle_switched"]->addObject(small_login);
 
 	//Sphere scene
 	DrawableObject* sphere = new DrawableObject(models["sphere"], shaderPrograms["basic"]);
 	drawableObjects["sphere"] = sphere;
 	scenes["sphere"]->addObject(sphere);
+	scenes["sphere"]->addObject(small_login);
 
 	//Forest scene
 	for (int i = 0; i < 10; i++) {
@@ -177,7 +188,7 @@ void Application::setupDrawableObjects() {
 			float tree_randomRotZ = rand() % 1000 / 100.0f - 1.0f;
 			float tree_randomScale = rand() % 100 / 1000.0f + 0.01f;
 
-			DrawableObject* tree = new DrawableObject(models["tree"], shaderPrograms["basic"]);
+			DrawableObject* tree = new DrawableObject(models["tree"], shaderPrograms["tree"]);
 			tree->transform.add(new Translation(glm::vec3(tree_randomX, tree_randomY, 0.0f)));
 			tree->transform.add(new Rotation(tree_randomRotY, glm::vec3(0.0f, 1.0f, 0.0f)));
 			tree->transform.add(new Rotation(tree_randomRotZ, glm::vec3(0.0f, 0.0f, 1.0f)));
@@ -192,7 +203,7 @@ void Application::setupDrawableObjects() {
 			float bush_randomRotZ = rand() % 1000 / 100.0f - 1.0f;
 			float bush_randomScale = rand() % 100 / 500.0f + 0.01f;
 
-			DrawableObject* bush = new DrawableObject(models["bush"], shaderPrograms["basic"]);
+			DrawableObject* bush = new DrawableObject(models["bush"], shaderPrograms["green"]);
 			bush->transform.add(new Translation(glm::vec3(bush_randomX, bush_randomY, 0.0f)));
 			bush->transform.add(new Rotation(bush_randomRotY, glm::vec3(0.0f, 1.0f, 0.0f)));
 			bush->transform.add(new Rotation(bush_randomRotZ, glm::vec3(0.0f, 0.0f, 1.0f)));
@@ -201,6 +212,7 @@ void Application::setupDrawableObjects() {
 			scenes["forest"]->addObject(bush);
 		}
 	}
+	scenes["forest"]->addObject(small_login);
 
 	//Solar system scene
 	DrawableObject* sun = new Sun(models["sun"], shaderPrograms["basic"], -25.0f, -20.0f);
@@ -214,6 +226,13 @@ void Application::setupDrawableObjects() {
 	DrawableObject* moon = new Moon(models["moon"], shaderPrograms["basic"], (Sun*)sun, (Earth*)earth);
 	drawableObjects["moon"] = moon;
 	scenes["solar_system"]->addObject(moon);
+	scenes["solar_system"]->addObject(small_login);
+
+	//Login scene
+	DrawableObject* login = new DrawableObject(models["login"], shaderPrograms["gray"]);
+	login->transform.add(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
+	drawableObjects["login"] = login;
+	scenes["login"]->addObject(login);
 }
 
 
@@ -250,6 +269,10 @@ void Application::keyCallback(GLFWwindow* window, int key, int scancode, int act
 
 	if (key == GLFW_KEY_5 && action == GLFW_PRESS) {
 		setActiveScene(scenes.at("solar_system"));
+	}
+
+	if (key == GLFW_KEY_6 && action == GLFW_PRESS) {
+		setActiveScene(scenes.at("login"));
 	}
 }
 

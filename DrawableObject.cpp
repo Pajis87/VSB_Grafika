@@ -21,5 +21,3 @@ void DrawableObject::draw() {
 
 void DrawableObject::start() {}
 void DrawableObject::update() {}
-
-ShaderProgram *shaderProgram;

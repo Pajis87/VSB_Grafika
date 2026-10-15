@@ -1,3 +1,5 @@
+// This file was created by Pavel Brazda - BRA0241
+
 #include "TriangleSwitched.h"
 #include "../Rotation.h"
 #include "../Translation.h"

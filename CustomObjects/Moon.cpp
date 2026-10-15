@@ -1,3 +1,5 @@
+// This file was created by Pavel Brazda - BRA0241
+
 #include "Moon.h"
 #include "../Rotation.h"
 #include "../Scale.h"
@@ -34,6 +36,7 @@ Moon::Moon(Model* model, ShaderProgram* shaderProgram, Sun* sun, Earth* earth): 
 	transform.add(new Translation(glm::vec3(0.2f, 0.0f, 0.0f)));
 
 	// Moon rotation around its own axis
+	// THIS CODE IS USELESS, THE MOON DOES NOT ROTATE AROUND ITS OWN AXIS TODO: REMOVE
 	axis_rotation_transform = new Rotation(0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 	transform.add(axis_rotation_transform);
 

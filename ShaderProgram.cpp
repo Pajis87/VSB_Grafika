@@ -1,4 +1,4 @@
-// This file was mostly created by Pavel Brazda - BRA0241 (exceptions are annotated)
+// This file was created by Pavel Brazda - BRA0241
 
 #include "ShaderProgram.h"
 
@@ -33,7 +33,6 @@ void ShaderProgram::useShaderProgram() {
 
 
 
-// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ vvv
 GLuint ShaderProgram::createShaderFromFile(GLenum shaderType, const char* shaderFile) {
 	// Creates an empty shader
 	GLuint shaderID = glCreateShader(shaderType);
@@ -73,4 +72,3 @@ GLuint ShaderProgram::createShaderFromFile(GLenum shaderType, const char* shader
 	}
 	return shaderID;
 }
-// ==== THIS CODE WAS TAKEN FROM MARTIN NEMEC AT LMS.VSB.CZ ^^^

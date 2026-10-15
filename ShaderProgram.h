@@ -1,4 +1,4 @@
-// This file was mostly created by Pavel Brazda - BRA0241 (exceptions are annotated)
+// This file was created by Pavel Brazda - BRA0241
 
 #ifndef SHADER_PROGRAM_H
 #define SHADER_PROGRAM_H
