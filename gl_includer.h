@@ -19,6 +19,7 @@
 #include <iostream>
 #include <vector>
 #include <span>
+#include <functional>
 
 
 #endif

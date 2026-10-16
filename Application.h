@@ -30,6 +30,8 @@ public:
 	void setupCallbacks();
 
 	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+	void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
 
 private:
 	Application();
@@ -42,6 +44,13 @@ private:
 	std::map<std::string, DrawableObject*> drawableObjects;
 	std::map<std::string, Model*> models;
 	std::map<std::string, Camera*> cameras;
+
+	bool rightMouseButtonDown = false;
+	float forwardSpeed = 0.0f;
+	float rightSpeed = 0.0f;
+
+	float lastCursorX = -1.0f;
+	float lastCursorY = -1.0f;
 };
 
 #endif

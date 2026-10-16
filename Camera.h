@@ -18,7 +18,7 @@ public:
 	void setPosition(glm::vec3 position);
 	void setRotation(glm::vec3 rotation);
 
-	void addPositionOffset(glm::vec3 offset);
+	void moveForward(glm::vec3 offset);
 	void addRotationOffset(glm::vec3 offset);
 
 	void subscribe(Listener* listener);

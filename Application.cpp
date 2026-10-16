@@ -113,6 +113,14 @@ bool Application::running() {
 void Application::run() {
 	while (this->running()) {
 		this->startFrame();
+
+		if (forwardSpeed != 0.0) {
+			cameras["main"]->moveForward(glm::vec3(0.0, 0.0, forwardSpeed));
+		}
+		if (rightSpeed != 0.0) {
+			cameras["main"]->moveForward(glm::vec3(rightSpeed, 0.0, 0.0));
+		}
+
 		this->endFrame();
 	}
 }
@@ -250,7 +258,6 @@ void Application::setupDrawableObjects() {
 	clock->transform.add(new Scale(glm::vec3(-0.8f, 0.8f, 0.8f)));
 	drawableObjects["clock"] = clock;
 	scenes["clock"]->addObject(clock);
-
 }
 
 void Application::setupScenes() {
@@ -265,17 +272,29 @@ void Application::setupScenes() {
 
 
 
-void callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
+void keyCallbackCaller(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	Application::getInstance()->keyCallback(window, key, scancode, action, mods);
 }
 
-void Application::setupCallbacks() {
-	glfwSetKeyCallback(window, callback);
+void mouseButtonCallbackCaller(GLFWwindow* window, int button, int action, int mods) {
+	Application::getInstance()->mouseButtonCallback(window, button, action, mods);
 }
 
-void Application::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
+void cursorPositionCallbackCaller(GLFWwindow* window, double xpos, double ypos) {
+	Application::getInstance()->cursorPositionCallback(window, xpos, ypos);
+}
+
+
+
+void Application::setupCallbacks() {
+	glfwSetKeyCallback(window, keyCallbackCaller);
+	glfwSetMouseButtonCallback(window, mouseButtonCallbackCaller);
+	glfwSetCursorPosCallback(window, cursorPositionCallbackCaller);
+}
+
+
+
+void Application::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
@@ -309,11 +328,51 @@ void Application::keyCallback(GLFWwindow* window, int key, int scancode, int act
 	}
 
 	if (key == GLFW_KEY_W && action == GLFW_PRESS) {
-		cameras["main"]->addPositionOffset(glm::vec3(0.0f, 0.0f, -1.0f));
+		forwardSpeed = 0.05f;
 	}
 	if (key == GLFW_KEY_S && action == GLFW_PRESS) {
-		cameras["main"]->addPositionOffset(glm::vec3(0.0f, 0.0f, 1.0f));
+		forwardSpeed = -0.05f;
 	}
+	if (key == GLFW_KEY_D && action == GLFW_PRESS) {
+		rightSpeed = 0.05f;
+	}
+	if (key == GLFW_KEY_A && action == GLFW_PRESS) {
+		rightSpeed = -0.05f;
+	}
+
+	if (key == GLFW_KEY_W && action == GLFW_RELEASE) {
+		forwardSpeed = 0.0f;
+	}
+	if (key == GLFW_KEY_S && action == GLFW_RELEASE) {
+		forwardSpeed = 0.0f;
+	}
+	if (key == GLFW_KEY_D && action == GLFW_RELEASE) {
+		rightSpeed = 0.0f;
+	}
+	if (key == GLFW_KEY_A && action == GLFW_RELEASE) {
+		rightSpeed = 0.0f;
+	}
+}
+
+void Application::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
+		rightMouseButtonDown = true;
+	}
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE) {
+		rightMouseButtonDown = false;
+	}
+}
+
+void Application::cursorPositionCallback(GLFWwindow* window, double xpos, double ypos) {
+	float offsetX = lastCursorX - xpos;
+	float offsetY = lastCursorY - ypos;
+
+	if (rightMouseButtonDown && lastCursorX > 0 && lastCursorY > 0) {
+		cameras["main"]->addRotationOffset(glm::vec3(offsetX * 0.1f, -offsetY * 0.1f, 0.0f));
+	}
+
+	lastCursorX = xpos;
+	lastCursorY = ypos;
 }
 
 

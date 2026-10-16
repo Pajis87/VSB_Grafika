@@ -15,7 +15,9 @@ glm::vec3 Camera::getPosition() {
 }
 
 glm::vec3 Camera::getRotation() {
-	return glm::vec3(1.0f);
+	float rotYRadians = acos(target.y);
+	glm::vec3 rotation =  glm::vec3(glm::degrees(acos(target.x / sin(rotYRadians))), glm::degrees(rotYRadians), 0.0f);
+	return rotation;
 }
 
 
@@ -25,16 +27,20 @@ void Camera::setPosition(glm::vec3 position) {
 }
 
 void Camera::setRotation(glm::vec3 rotation) {
+	target.x = sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
+	target.y = cos(glm::radians(rotation.y));
+	target.z = -sin(glm::radians(rotation.y)) * sin(glm::radians(rotation.x));
 	notifySubscribers();
 }
 
 
-void Camera::addPositionOffset(glm::vec3 offset) {
-	setPosition(position + offset);
+void Camera::moveForward(glm::vec3 offset) {
+	glm::vec3 newPosition = glm::vec3();
+	setPosition(newPosition);
 }
 
 void Camera::addRotationOffset(glm::vec3 offset) {
-	notifySubscribers();
+	setRotation(getRotation() + offset);
 }
 
 void Camera::subscribe(Listener* listener) {
