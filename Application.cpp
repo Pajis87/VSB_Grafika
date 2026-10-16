@@ -6,6 +6,7 @@
 #include "CustomObjects/Sun.h"
 #include "CustomObjects/Earth.h"
 #include "CustomObjects/Moon.h"
+#include "CustomObjects/Clock.h"
 #include "Assets/models/sphere.h"
 #include "Assets/models/tree.h"
 #include "Assets/models/bush.h"
@@ -13,6 +14,7 @@
 #include "Assets/models/sun.h"
 #include "Assets/models/moon.h"
 #include "Assets/models/login.h"
+#include "Assets/models/clock.h"
 #include "Rotation.h"
 #include "Translation.h"
 #include "Camera.h"
@@ -128,6 +130,7 @@ void Application::setupScenes() {
 	scenes["forest"] = new Scene();
 	scenes["solar_system"] = new Scene();
 	scenes["login"] = new Scene();
+	scenes["clock"] = new Scene();
 
 	this->setActiveScene(triangle);
 }
@@ -137,6 +140,7 @@ void Application::setupShaders() {
 	shaderPrograms["green"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/green.frag");
 	shaderPrograms["tree"] = new ShaderProgram("Assets/shaders/tree.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["gray"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/gray.frag");
+	shaderPrograms["clock"] = new ShaderProgram("Assets/shaders/clock.vert", "Assets/shaders/basic.frag");
 }
 
 void Application::setupModels() {
@@ -153,7 +157,8 @@ void Application::setupModels() {
 	models["sun"] = new Model(sun, { 3, 3, 3 });
 	models["earth"] = new Model(earth, { 3, 3, 3 });
 	models["moon"] = new Model(moon, { 3, 3, 3 });
-	models["login"] = new Model(login, { 3, 3});
+	models["login"] = new Model(login, { 3, 3 });
+	models["clock"] = new Model(clockModel, { 3, 3, 3 });
 }
 
 void Application::setupDrawableObjects() {
@@ -234,6 +239,13 @@ void Application::setupDrawableObjects() {
 	login->transform.add(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
 	drawableObjects["login"] = login;
 	scenes["login"]->addObject(login);
+
+	//Clock scene
+	DrawableObject* clock = new Clock(models["clock"], shaderPrograms["clock"]);
+	clock->transform.add(new Scale(glm::vec3(0.8f, 0.8f, 0.8f)));
+	drawableObjects["clock"] = clock;
+	scenes["clock"]->addObject(clock);
+
 }
 
 void Application::setupCameras() {
@@ -280,6 +292,10 @@ void Application::keyCallback(GLFWwindow* window, int key, int scancode, int act
 
 	if (key == GLFW_KEY_6 && action == GLFW_PRESS) {
 		setActiveScene(scenes.at("login"));
+	}
+
+	if (key == GLFW_KEY_7 && action == GLFW_PRESS) {
+		setActiveScene(scenes.at("clock"));
 	}
 }
 

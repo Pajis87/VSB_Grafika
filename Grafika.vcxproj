@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Assets\models\bush.h" />
+    <ClInclude Include="Assets\models\clock.h" />
     <ClInclude Include="Assets\models\earth.h" />
     <ClInclude Include="Assets\models\gift.h" />
     <ClInclude Include="Assets\models\login.h" />
@@ -154,12 +155,14 @@
     <ClInclude Include="Assets\models\tree.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CompositeTransform.h" />
+    <ClInclude Include="CustomObjects\Clock.h" />
     <ClInclude Include="CustomObjects\Earth.h" />
     <ClInclude Include="CustomObjects\Moon.h" />
     <ClInclude Include="CustomObjects\Sun.h" />
     <ClInclude Include="CustomObjects\Triangle.h" />
     <ClInclude Include="CustomObjects\TriangleSwitched.h" />
     <ClInclude Include="DrawableObject.h" />
+    <ClInclude Include="FirstPersonController.h" />
     <ClInclude Include="gl_includer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Rotation.h" />
@@ -172,6 +175,7 @@
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag" />
     <None Include="Assets\shaders\basic.vert" />
+    <None Include="Assets\shaders\clock.vert" />
     <None Include="Assets\shaders\gray.frag" />
     <None Include="Assets\shaders\green.frag" />
     <None Include="Assets\shaders\tree.vert" />
@@ -180,6 +184,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CompositeTransform.cpp" />
+    <ClCompile Include="CustomObjects\Clock.cpp" />
     <ClCompile Include="CustomObjects\Earth.cpp" />
     <ClCompile Include="CustomObjects\Moon.cpp" />
     <ClCompile Include="CustomObjects\Sun.cpp" />

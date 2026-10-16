@@ -102,6 +102,15 @@
     <ClInclude Include="Camera.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
+    <ClInclude Include="FirstPersonController.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\models\clock.h">
+      <Filter>Assets\models</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomObjects\Clock.h">
+      <Filter>Hlavičkové soubory\CustomObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag">
@@ -117,6 +126,9 @@
       <Filter>Assets\shaders</Filter>
     </None>
     <None Include="Assets\shaders\tree.vert">
+      <Filter>Assets\shaders</Filter>
+    </None>
+    <None Include="Assets\shaders\clock.vert">
       <Filter>Assets\shaders</Filter>
     </None>
   </ItemGroup>
@@ -171,6 +183,9 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomObjects\Clock.cpp">
+      <Filter>Zdrojové soubory\CustomObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
