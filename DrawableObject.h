@@ -7,7 +7,6 @@
 #include "ShaderProgram.h"
 #include "Model.h"
 #include "CompositeTransform.h"
-#include "Camera.h"
 
 class DrawableObject {
 public:

@@ -21,11 +21,12 @@ public:
 	void run();
 
 
-	void setupScenes();
+	void createScenes();
+	void setupCameras();
 	void setupShaders();
 	void setupModels();
 	void setupDrawableObjects();
-	void setupCameras();
+	void setupScenes();
 	void setupCallbacks();
 
 	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -40,6 +41,7 @@ private:
 	std::map<std::string, ShaderProgram*> shaderPrograms;
 	std::map<std::string, DrawableObject*> drawableObjects;
 	std::map<std::string, Model*> models;
+	std::map<std::string, Camera*> cameras;
 };
 
 #endif

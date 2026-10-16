@@ -6,11 +6,12 @@ int main() {
     Application* app = Application::getInstance();
 
 	app->init(800, 800, "ZPG");
-	app->setupScenes();
+	app->createScenes();
+	app->setupCameras();
 	app->setupShaders();
 	app->setupModels();
 	app->setupDrawableObjects();
-	app->setupCameras();
+	app->setupScenes();
 	app->setupCallbacks();
     app->run();
 

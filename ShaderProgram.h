@@ -4,14 +4,17 @@
 #define SHADER_PROGRAM_H
 
 #include "gl_includer.h"
+#include "Listener.h"
 #include "Camera.h"
 
-class ShaderProgram {
+class ShaderProgram : public Listener {
 public:
 	ShaderProgram(const char* vertexShaderFile, const char* fragmentShaderFile);
 	void setVariable(const GLchar* name, glm::mat4 matrix);
 	void useShaderProgram();
 	void setCamera(Camera* camera);
+
+	void update() override;
 private:
 	Camera* camera;
 	GLuint vertexShader;

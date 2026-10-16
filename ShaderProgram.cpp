@@ -33,6 +33,11 @@ void ShaderProgram::useShaderProgram() {
 
 void ShaderProgram::setCamera(Camera* camera) {
 	this->camera = camera;
+	camera->subscribe(this);
+	update();
+}
+
+void ShaderProgram::update() {
 	setVariable("viewMatrix", camera->getViewMatrix());
 	setVariable("projectionMatrix", camera->getProjectionMatrix());
 }

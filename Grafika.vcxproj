@@ -162,8 +162,9 @@
     <ClInclude Include="CustomObjects\Triangle.h" />
     <ClInclude Include="CustomObjects\TriangleSwitched.h" />
     <ClInclude Include="DrawableObject.h" />
-    <ClInclude Include="FirstPersonController.h" />
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="gl_includer.h" />
+    <ClInclude Include="Listener.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Rotation.h" />
     <ClInclude Include="Scale.h" />

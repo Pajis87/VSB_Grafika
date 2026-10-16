@@ -12,6 +12,7 @@ public:
 	Clock(Model* model, ShaderProgram* shaderProgram);
 
 	void update() override;
+
 private:
 	glm::mat4 secondsMatrix = glm::mat4(1.0);
 	glm::mat4 minutesMatrix = glm::mat4(1.0);

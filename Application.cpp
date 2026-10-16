@@ -122,7 +122,7 @@ void Application::run() {
 
 
 
-void Application::setupScenes() {
+void Application::createScenes() {
 	Scene* triangle = new Scene();
 	scenes["triangle"] = triangle;
 	scenes["triangle_switched"] = new Scene();
@@ -133,6 +133,10 @@ void Application::setupScenes() {
 	scenes["clock"] = new Scene();
 
 	this->setActiveScene(triangle);
+}
+
+void Application::setupCameras() {
+	cameras["main"] = new Camera();
 }
 
 void Application::setupShaders() {
@@ -242,17 +246,23 @@ void Application::setupDrawableObjects() {
 
 	//Clock scene
 	DrawableObject* clock = new Clock(models["clock"], shaderPrograms["clock"]);
-	clock->transform.add(new Scale(glm::vec3(0.8f, 0.8f, 0.8f)));
+	clock->transform.add(new Rotation(180, glm::vec3(0.0f, 1.0f, 0.0f)));
+	clock->transform.add(new Scale(glm::vec3(-0.8f, 0.8f, 0.8f)));
 	drawableObjects["clock"] = clock;
 	scenes["clock"]->addObject(clock);
 
 }
 
-void Application::setupCameras() {
-	Camera* camera = new Camera();
-	scenes["triangle"]->addCamera(camera);
-	scenes["triangle"]->setActiveCamera(camera);
+void Application::setupScenes() {
+	scenes["triangle"]->setActiveCamera(cameras["main"]);
+	scenes["triangle_switched"]->setActiveCamera(cameras["main"]);
+	scenes["sphere"]->setActiveCamera(cameras["main"]);
+	scenes["forest"]->setActiveCamera(cameras["main"]);
+	scenes["solar_system"]->setActiveCamera(cameras["main"]);
+	scenes["login"]->setActiveCamera(cameras["main"]);
+	scenes["clock"]->setActiveCamera(cameras["main"]);
 }
+
 
 
 void callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -296,6 +306,13 @@ void Application::keyCallback(GLFWwindow* window, int key, int scancode, int act
 
 	if (key == GLFW_KEY_7 && action == GLFW_PRESS) {
 		setActiveScene(scenes.at("clock"));
+	}
+
+	if (key == GLFW_KEY_W && action == GLFW_PRESS) {
+		cameras["main"]->addPositionOffset(glm::vec3(0.0f, 0.0f, -1.0f));
+	}
+	if (key == GLFW_KEY_S && action == GLFW_PRESS) {
+		cameras["main"]->addPositionOffset(glm::vec3(0.0f, 0.0f, 1.0f));
 	}
 }
 

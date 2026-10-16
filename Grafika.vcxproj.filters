@@ -102,7 +102,7 @@
     <ClInclude Include="Camera.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
-    <ClInclude Include="FirstPersonController.h">
+    <ClInclude Include="Controller.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
     <ClInclude Include="Assets\models\clock.h">
@@ -110,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="CustomObjects\Clock.h">
       <Filter>Hlavičkové soubory\CustomObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Listener.h">
+      <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
