@@ -93,6 +93,7 @@ void Application::setActiveScene(Scene* scene) {
 
 void Application::startFrame() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClearColor(0.4f, 0.7f, 1.0f, 1.0f);
 }
 
 void Application::endFrame() {
