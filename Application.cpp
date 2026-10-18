@@ -328,29 +328,29 @@ void Application::keyCallback(GLFWwindow* window, int key, int scancode, int act
 	}
 
 	if (key == GLFW_KEY_W && action == GLFW_PRESS) {
-		forwardSpeed = 0.05f;
+		forwardSpeed += 0.05f;
 	}
 	if (key == GLFW_KEY_S && action == GLFW_PRESS) {
-		forwardSpeed = -0.05f;
+		forwardSpeed -= 0.05f;
 	}
 	if (key == GLFW_KEY_D && action == GLFW_PRESS) {
-		rightSpeed = 0.05f;
+		rightSpeed += 0.05f;
 	}
 	if (key == GLFW_KEY_A && action == GLFW_PRESS) {
-		rightSpeed = -0.05f;
+		rightSpeed -= 0.05f;
 	}
 
 	if (key == GLFW_KEY_W && action == GLFW_RELEASE) {
-		forwardSpeed = 0.0f;
+		forwardSpeed -= 0.05f;
 	}
 	if (key == GLFW_KEY_S && action == GLFW_RELEASE) {
-		forwardSpeed = 0.0f;
+		forwardSpeed += 0.05f;
 	}
 	if (key == GLFW_KEY_D && action == GLFW_RELEASE) {
-		rightSpeed = 0.0f;
+		rightSpeed -= 0.05f;
 	}
 	if (key == GLFW_KEY_A && action == GLFW_RELEASE) {
-		rightSpeed = 0.0f;
+		rightSpeed += 0.05f;
 	}
 }
 
@@ -367,8 +367,8 @@ void Application::cursorPositionCallback(GLFWwindow* window, double xpos, double
 	float offsetX = lastCursorX - xpos;
 	float offsetY = lastCursorY - ypos;
 
-	if (rightMouseButtonDown && lastCursorX > 0 && lastCursorY > 0) {
-		cameras["main"]->addRotationOffset(glm::vec3(offsetX * 0.1f, -offsetY * 0.1f, 0.0f));
+	if (rightMouseButtonDown) {
+		cameras["main"]->addRotationOffset(glm::vec3(-offsetY * 0.1f, offsetX * 0.1f, 0.0f));
 	}
 
 	lastCursorX = xpos;

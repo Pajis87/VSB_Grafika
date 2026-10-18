@@ -13,11 +13,27 @@ glm::mat4 Camera::getProjectionMatrix() {
 glm::vec3 Camera::getPosition() {
 	return position;
 }
-
+/*
 glm::vec3 Camera::getRotation() {
 	float rotYRadians = acos(target.y);
-	glm::vec3 rotation =  glm::vec3(glm::degrees(acos(target.x / sin(rotYRadians))), glm::degrees(rotYRadians), 0.0f);
+	glm::vec3 rotation =  glm::vec3(
+		glm::degrees(rotYRadians),
+		glm::degrees(acos(target.x / sin(rotYRadians))),
+		0.0f
+	);
+	printf("%f %f %f\n", rotation.x, rotation.y, rotation.z);
 	return rotation;
+}*/
+glm::vec3 Camera::getRotation() {
+	float rotX = glm::degrees(acos(target.y));
+
+	float rotY = glm::degrees(atan2(-target.z, target.x));
+
+	if (rotY < 0.0f) {
+		rotY += 360.0f;
+	}
+	printf("%f %f\n", rotX, rotY);
+	return glm::vec3(rotX, rotY, 0.0f);
 }
 
 
@@ -27,15 +43,21 @@ void Camera::setPosition(glm::vec3 position) {
 }
 
 void Camera::setRotation(glm::vec3 rotation) {
-	target.x = sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
-	target.y = cos(glm::radians(rotation.y));
-	target.z = -sin(glm::radians(rotation.y)) * sin(glm::radians(rotation.x));
+	rotation.x = std::clamp(rotation.x, 10.0f, 170.0f);
+
+	target.x = sin(glm::radians(rotation.x)) * cos(glm::radians(rotation.y));
+	target.y = cos(glm::radians(rotation.x));
+	target.z = -sin(glm::radians(rotation.x)) * sin(glm::radians(rotation.y));
 	notifySubscribers();
 }
 
 
 void Camera::moveForward(glm::vec3 offset) {
-	glm::vec3 newPosition = glm::vec3();
+	glm::vec3 front = glm::vec3(target.x, 0.0f, target.z);
+	glm::vec3 right = glm::cross(front, glm::vec3(0.0f, 1.0f, 0.0f));
+
+	glm::vec3 newPosition = position + (front * offset.z) + (right * offset.x);
+
 	setPosition(newPosition);
 }
 

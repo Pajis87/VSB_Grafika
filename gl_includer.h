@@ -20,6 +20,7 @@
 #include <vector>
 #include <span>
 #include <functional>
+#include <algorithm>
 
 
 #endif
