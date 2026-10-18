@@ -17,7 +17,6 @@ glm::vec3 Camera::getPosition() {
 
 glm::vec3 Camera::getRotation() {
 	float rotX = glm::degrees(acos(target.y));
-
 	float rotY = glm::degrees(atan2(-target.z, target.x));
 
 	if (rotY < 0.0f) {

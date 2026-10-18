@@ -164,7 +164,6 @@
     <ClInclude Include="CustomObjects\Triangle.h" />
     <ClInclude Include="CustomObjects\TriangleSwitched.h" />
     <ClInclude Include="DrawableObject.h" />
-    <ClInclude Include="Controller.h" />
     <ClInclude Include="gl_includer.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="Model.h" />
@@ -178,7 +177,6 @@
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag" />
     <None Include="Assets\shaders\basic.vert" />
-    <None Include="Assets\shaders\brown.frag" />
     <None Include="Assets\shaders\bush.vert" />
     <None Include="Assets\shaders\clock.vert" />
     <None Include="Assets\shaders\gray.frag" />
@@ -190,7 +188,6 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CompositeTransform.cpp" />
-    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="CustomObjects\Clock.cpp" />
     <ClCompile Include="CustomObjects\Earth.cpp" />
     <ClCompile Include="CustomObjects\Moon.cpp" />

@@ -33,6 +33,7 @@ Application* Application::getInstance() {
 Application::Application() : window(nullptr), activeScene(nullptr) {}
 
 int Application::init(int width, int height, const char* title) {
+	srand(time(NULL));
 	// Initialize GLFW
 	if (!glfwInit())
 		exit(EXIT_FAILURE);
@@ -153,7 +154,6 @@ void Application::setupCameras() {
 void Application::setupShaders() {
 	shaderPrograms["basic"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["green"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/green.frag");
-	shaderPrograms["brown"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/brown.frag");
 	shaderPrograms["bush"] = new ShaderProgram("Assets/shaders/bush.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["tree"] = new ShaderProgram("Assets/shaders/tree.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["tree2"] = new ShaderProgram("Assets/shaders/tree2.vert", "Assets/shaders/basic.frag");
@@ -197,7 +197,7 @@ void Application::setupModels() {
 void Application::setupDrawableObjects() {
 	DrawableObject* small_login = new DrawableObject(models["login"], shaderPrograms["gray"]);
 	small_login->transform.add(new Translation(glm::vec3(0.8f, -0.9f, -0.8f)));
-	small_login->transform.add(new Scale(glm::vec3(0.1f, 0.1f, 0.1f)));
+	small_login->transform.add(new Scale(glm::vec3(0.25f, 0.25f, 0.25f)));
 	drawableObjects["login"] = small_login;
 
 	// Triangle scene
@@ -340,6 +340,9 @@ void Application::setupScenes() {
 	scenes["login"]->setActiveCamera(cameras["main"]);
 	scenes["clock"]->setActiveCamera(cameras["main"]);
 }
+
+
+
 
 
 

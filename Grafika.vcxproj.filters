@@ -102,9 +102,6 @@
     <ClInclude Include="Camera.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
-    <ClInclude Include="Controller.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
     <ClInclude Include="Assets\models\clock.h">
       <Filter>Assets\models</Filter>
     </ClInclude>
@@ -141,9 +138,6 @@
       <Filter>Assets\shaders</Filter>
     </None>
     <None Include="Assets\shaders\bush.vert">
-      <Filter>Assets\shaders</Filter>
-    </None>
-    <None Include="Assets\shaders\brown.frag">
       <Filter>Assets\shaders</Filter>
     </None>
     <None Include="Assets\shaders\tree2.vert">
@@ -204,9 +198,6 @@
     </ClCompile>
     <ClCompile Include="CustomObjects\Clock.cpp">
       <Filter>Zdrojové soubory\CustomObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Controller.cpp">
-      <Filter>Zdrojové soubory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
