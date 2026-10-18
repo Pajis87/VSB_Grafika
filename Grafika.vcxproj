@@ -148,11 +148,13 @@
     <ClInclude Include="Assets\models\clock.h" />
     <ClInclude Include="Assets\models\earth.h" />
     <ClInclude Include="Assets\models\gift.h" />
+    <ClInclude Include="Assets\models\grass.h" />
     <ClInclude Include="Assets\models\login.h" />
     <ClInclude Include="Assets\models\moon.h" />
     <ClInclude Include="Assets\models\sphere.h" />
     <ClInclude Include="Assets\models\sun.h" />
     <ClInclude Include="Assets\models\tree.h" />
+    <ClInclude Include="Assets\models\tree2.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CompositeTransform.h" />
     <ClInclude Include="CustomObjects\Clock.h" />
@@ -176,10 +178,13 @@
   <ItemGroup>
     <None Include="Assets\shaders\basic.frag" />
     <None Include="Assets\shaders\basic.vert" />
+    <None Include="Assets\shaders\brown.frag" />
+    <None Include="Assets\shaders\bush.vert" />
     <None Include="Assets\shaders\clock.vert" />
     <None Include="Assets\shaders\gray.frag" />
     <None Include="Assets\shaders\green.frag" />
     <None Include="Assets\shaders\tree.vert" />
+    <None Include="Assets\shaders\tree2.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />

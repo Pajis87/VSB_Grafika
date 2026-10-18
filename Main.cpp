@@ -5,7 +5,7 @@
 int main() {
     Application* app = Application::getInstance();
 
-	app->init(800, 800, "ZPG");
+	app->init(1600, 900, "ZPG");
 	app->createScenes();
 	app->setupCameras();
 	app->setupShaders();

@@ -9,7 +9,9 @@
 #include "CustomObjects/Clock.h"
 #include "Assets/models/sphere.h"
 #include "Assets/models/tree.h"
+#include "Assets/models/tree2.h"
 #include "Assets/models/bush.h"
+#include "Assets/models/grass.h"
 #include "Assets/models/earth.h"
 #include "Assets/models/sun.h"
 #include "Assets/models/moon.h"
@@ -150,7 +152,10 @@ void Application::setupCameras() {
 void Application::setupShaders() {
 	shaderPrograms["basic"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["green"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/green.frag");
+	shaderPrograms["brown"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/brown.frag");
+	shaderPrograms["bush"] = new ShaderProgram("Assets/shaders/bush.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["tree"] = new ShaderProgram("Assets/shaders/tree.vert", "Assets/shaders/basic.frag");
+	shaderPrograms["tree2"] = new ShaderProgram("Assets/shaders/tree2.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["gray"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/gray.frag");
 	shaderPrograms["clock"] = new ShaderProgram("Assets/shaders/clock.vert", "Assets/shaders/basic.frag");
 }
@@ -159,18 +164,33 @@ void Application::setupModels() {
 	float points[] = {
 		0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
 		0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-	   -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
 	};
 
 	models["triangle"] = new Model(points, { 3, 3 });
 	models["sphere"] = new Model(sphere, { 3, 3 });
 	models["tree"] = new Model(tree, { 3, 3 });
+	models["tree2"] = new Model(tree2, { 3, 3 });
 	models["bush"] = new Model(bush, { 3, 3 });
+	models["grass"] = new Model(grass, { 3, 3 });
 	models["sun"] = new Model(sun, { 3, 3, 3 });
 	models["earth"] = new Model(earth, { 3, 3, 3 });
 	models["moon"] = new Model(moon, { 3, 3, 3 });
 	models["login"] = new Model(login, { 3, 3 });
 	models["clock"] = new Model(clockModel, { 3, 3, 3 });
+
+
+	float forestGroundPoints[] = {
+		-1.0f, 0.0f, -1.0f, 0.0, 0.0, 0.0,
+		1.0f, 0.0f, -1.0f, 0.0, 0.0, 0.0,
+		1.0f, 0.0f, 1.0f, 0.0, 0.0, 0.0,
+		1.0f, 0.0f, 1.0f, 0.0, 0.0, 0.0,
+		-1.0f, 0.0f, 1.0f, 0.0, 0.0, 0.0,
+		-1.0f, 0.0f, -1.0f, 0.0, 0.0, 0.0
+	};
+
+
+	models["ground"] = new Model(forestGroundPoints, { 3, 3 });
 }
 
 void Application::setupDrawableObjects() {
@@ -198,37 +218,87 @@ void Application::setupDrawableObjects() {
 	scenes["sphere"]->addObject(small_login);
 
 	//Forest scene
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 5; j++) {
-			float tree_randomX = rand() % 200 / 100.0f - 1.0f;
-			float tree_randomY = rand() % 200 / 100.0f - 1.0f;
-			float tree_randomRotY = rand() % 10000 / 100.0f - 1.0f;
-			float tree_randomRotZ = rand() % 1000 / 100.0f - 1.0f;
-			float tree_randomScale = rand() % 100 / 1000.0f + 0.01f;
+	DrawableObject* ground = new DrawableObject(models["ground"], shaderPrograms["green"]);
+	ground->transform.add(new Translation(glm::vec3(0.0, -1.0, 0.0)));
+	ground->transform.add(new Scale(glm::vec3(50.0, 50.0, 50.0)));
+	drawableObjects["ground"] = ground;
+	scenes["forest"]->addObject(ground);
 
-			DrawableObject* tree = new DrawableObject(models["tree"], shaderPrograms["tree"]);
-			tree->transform.add(new Translation(glm::vec3(tree_randomX, tree_randomY, 0.0f)));
-			tree->transform.add(new Rotation(tree_randomRotY, glm::vec3(0.0f, 1.0f, 0.0f)));
-			tree->transform.add(new Rotation(tree_randomRotZ, glm::vec3(0.0f, 0.0f, 1.0f)));
-			tree->transform.add(new Scale(glm::vec3(tree_randomScale, tree_randomScale, tree_randomScale)));
-			drawableObjects["tree_" + std::to_string(i) + "_" + std::to_string(j)] = tree;
-			scenes["forest"]->addObject(tree);
+	DrawableObject* clock1 = new Clock(models["clock"], shaderPrograms["clock"]);
+	clock1->transform.add(new Translation(glm::vec3(-10.0f, 0.0f, 2.0f)));
+	clock1->transform.add(new Rotation(-70, glm::vec3(0.0f, 1.0f, 0.0f)));
+	clock1->transform.add(new Rotation(20, glm::vec3(0.0f, 0.0f, 1.0f)));
+	clock1->transform.add(new Scale(glm::vec3(-0.8f, 0.8f, 0.8f)));
+	drawableObjects["clock1"] = clock1;
+	scenes["forest"]->addObject(clock1);
 
+	DrawableObject* clock2 = new Clock(models["clock"], shaderPrograms["clock"]);
+	clock2->transform.add(new Translation(glm::vec3(10.0f, 0.0f, 5.0f)));
+	clock2->transform.add(new Rotation(40, glm::vec3(0.0f, 1.0f, 0.0f)));
+	clock2->transform.add(new Rotation(-10, glm::vec3(0.0f, 0.0f, 1.0f)));
+	clock2->transform.add(new Scale(glm::vec3(-0.6f, 0.6f, 0.6f)));
+	drawableObjects["clock2"] = clock2;
+	scenes["forest"]->addObject(clock2);
 
-			float bush_randomX = rand() % 200 / 100.0f - 1.0f;
-			float bush_randomY = rand() % 200 / 100.0f - 1.0f;
-			float bush_randomRotY = rand() % 10000 / 100.0f - 1.0f;
-			float bush_randomRotZ = rand() % 1000 / 100.0f - 1.0f;
-			float bush_randomScale = rand() % 100 / 500.0f + 0.01f;
+	for (int i = 0; i < 100; i++) {
+		float tree_randomX = (rand() % 10000 - 5000) / 100.0f;
+		float tree_randomZ = (rand() % 10000 - 5000) / 100.0f;
+		float tree_randomRotY = rand() % 360;
+		float tree_randomRotZ = rand() % 10;
+		float tree_randomScale = (rand() % 100 + 40) / 100.0f;
 
-			DrawableObject* bush = new DrawableObject(models["bush"], shaderPrograms["green"]);
-			bush->transform.add(new Translation(glm::vec3(bush_randomX, bush_randomY, 0.0f)));
-			bush->transform.add(new Rotation(bush_randomRotY, glm::vec3(0.0f, 1.0f, 0.0f)));
-			bush->transform.add(new Rotation(bush_randomRotZ, glm::vec3(0.0f, 0.0f, 1.0f)));
-			bush->transform.add(new Scale(glm::vec3(bush_randomScale, bush_randomScale, bush_randomScale)));
-			drawableObjects["bush_" + std::to_string(i) + "_" + std::to_string(j)] = bush;
-			scenes["forest"]->addObject(bush);
-		}
+		DrawableObject* tree = new DrawableObject(models["tree"], shaderPrograms["tree"]);
+		tree->transform.add(new Translation(glm::vec3(tree_randomX, -1.0f, tree_randomZ)));
+		tree->transform.add(new Rotation(tree_randomRotY, glm::vec3(0.0f, 1.0f, 0.0f)));
+		tree->transform.add(new Rotation(tree_randomRotZ, glm::vec3(0.0f, 0.0f, 1.0f)));
+		tree->transform.add(new Scale(glm::vec3(tree_randomScale, tree_randomScale, tree_randomScale)));
+		drawableObjects["tree_" + std::to_string(i)] = tree;
+		scenes["forest"]->addObject(tree);
+	}
+
+	for (int i = 0; i < 100; i++) {
+		float tree_randomX = (rand() % 10000 - 5000) / 100.0f;
+		float tree_randomZ = (rand() % 10000 - 5000) / 100.0f;
+		float tree_randomRotY = rand() % 360;
+		float tree_randomScale = (rand() % 90 + 50) / 100.0f;
+
+		DrawableObject* tree = new DrawableObject(models["tree2"], shaderPrograms["tree2"]);
+		tree->transform.add(new Translation(glm::vec3(tree_randomX, -1.0f, tree_randomZ)));
+		tree->transform.add(new Rotation(-90, glm::vec3(1.0f, 0.0f, 0.0f)));
+		tree->transform.add(new Rotation(tree_randomRotY, glm::vec3(0.0f, 0.0f, 1.0f)));
+		tree->transform.add(new Scale(glm::vec3(tree_randomScale, tree_randomScale, tree_randomScale)));
+		drawableObjects["tree2_" + std::to_string(i)] = tree;
+		scenes["forest"]->addObject(tree);
+	}
+
+	for (int i = 0; i < 200; i++) {
+		float bush_randomX = (rand() % 10000 - 5000) / 100.0f;
+		float bush_randomZ = (rand() % 10000 - 5000) / 100.0f;
+		float bush_randomRotY = rand() % 360;
+		float bush_randomScale = (rand() % 220 + 100) / 100.0f;
+
+		DrawableObject* bush = new DrawableObject(models["bush"], shaderPrograms["bush"]);
+		bush->transform.add(new Translation(glm::vec3(bush_randomX, -1.0f, bush_randomZ)));
+		bush->transform.add(new Rotation(-90, glm::vec3(1.0f, 0.0f, 0.0f)));
+		bush->transform.add(new Rotation(bush_randomRotY, glm::vec3(0.0f, 0.0f, 1.0f)));
+		bush->transform.add(new Scale(glm::vec3(bush_randomScale, bush_randomScale, bush_randomScale)));
+		drawableObjects["bush_" + std::to_string(i)] = bush;
+		scenes["forest"]->addObject(bush);
+	}
+
+	for (int i = 0; i < 1000; i++) {
+		float bush_randomX = (rand() % 5000 - 2500) / 100.0f;
+		float bush_randomZ = (rand() % 5000 - 2500) / 100.0f;
+		float bush_randomRotY = rand() % 360;
+		float bush_randomScale = (rand() % 200 + 80) / 100.0f;
+
+		DrawableObject* bush = new DrawableObject(models["grass"], shaderPrograms["bush"]);
+		bush->transform.add(new Translation(glm::vec3(bush_randomX, -1.0f, bush_randomZ)));
+		bush->transform.add(new Rotation(-90, glm::vec3(1.0f, 0.0f, 0.0f)));
+		bush->transform.add(new Rotation(bush_randomRotY, glm::vec3(0.0f, 0.0f, 1.0f)));
+		bush->transform.add(new Scale(glm::vec3(bush_randomScale, bush_randomScale, bush_randomScale)));
+		drawableObjects["grass_" + std::to_string(i)] = bush;
+		scenes["forest"]->addObject(bush);
 	}
 	scenes["forest"]->addObject(small_login);
 
@@ -253,11 +323,11 @@ void Application::setupDrawableObjects() {
 	scenes["login"]->addObject(login);
 
 	//Clock scene
-	DrawableObject* clock = new Clock(models["clock"], shaderPrograms["clock"]);
-	clock->transform.add(new Rotation(180, glm::vec3(0.0f, 1.0f, 0.0f)));
-	clock->transform.add(new Scale(glm::vec3(-0.8f, 0.8f, 0.8f)));
-	drawableObjects["clock"] = clock;
-	scenes["clock"]->addObject(clock);
+	DrawableObject* singleClock = new Clock(models["clock"], shaderPrograms["clock"]);
+	singleClock->transform.add(new Rotation(180, glm::vec3(0.0f, 1.0f, 0.0f)));
+	singleClock->transform.add(new Scale(glm::vec3(-0.8f, 0.8f, 0.8f)));
+	drawableObjects["singleClock"] = singleClock;
+	scenes["clock"]->addObject(singleClock);
 }
 
 void Application::setupScenes() {

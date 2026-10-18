@@ -6,24 +6,15 @@ glm::mat4 Camera::getViewMatrix() {
 }
 
 glm::mat4 Camera::getProjectionMatrix() {
-	return glm::perspective(glm::radians(60.0f), 1.0f, 0.1f, 100.0f);
+	return glm::perspective(glm::radians(60.0f), 16.0f / 9.0f, 0.1f, 100.0f);
 }
 
 
 glm::vec3 Camera::getPosition() {
 	return position;
 }
-/*
-glm::vec3 Camera::getRotation() {
-	float rotYRadians = acos(target.y);
-	glm::vec3 rotation =  glm::vec3(
-		glm::degrees(rotYRadians),
-		glm::degrees(acos(target.x / sin(rotYRadians))),
-		0.0f
-	);
-	printf("%f %f %f\n", rotation.x, rotation.y, rotation.z);
-	return rotation;
-}*/
+
+
 glm::vec3 Camera::getRotation() {
 	float rotX = glm::degrees(acos(target.y));
 
@@ -32,7 +23,6 @@ glm::vec3 Camera::getRotation() {
 	if (rotY < 0.0f) {
 		rotY += 360.0f;
 	}
-	printf("%f %f\n", rotX, rotY);
 	return glm::vec3(rotX, rotY, 0.0f);
 }
 
