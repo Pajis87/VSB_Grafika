@@ -11,6 +11,7 @@ class ShaderProgram : public Listener {
 public:
 	ShaderProgram(const char* vertexShaderFile, const char* fragmentShaderFile);
 	void setVariable(const GLchar* name, glm::mat4 matrix);
+	void setVariable(const GLchar* name, glm::vec3 vector);
 	void useShaderProgram();
 	void setCamera(Camera* camera);
 

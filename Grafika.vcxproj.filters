@@ -143,6 +143,12 @@
     <None Include="Assets\shaders\tree2.vert">
       <Filter>Assets\shaders</Filter>
     </None>
+    <None Include="Assets\shaders\phong.frag">
+      <Filter>Assets\shaders</Filter>
+    </None>
+    <None Include="Assets\shaders\phong.vert">
+      <Filter>Assets\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">

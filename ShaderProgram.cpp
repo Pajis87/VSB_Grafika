@@ -27,6 +27,18 @@ void ShaderProgram::setVariable(const GLchar* name, glm::mat4 matrix) {
 	glUseProgram(0);
 }
 
+void ShaderProgram::setVariable(const GLchar* name, glm::vec3 vector) {
+	glUseProgram(this->shaderProgram);
+	int location = glGetUniformLocation(this->shaderProgram, name);
+	if (location == -1) {
+		std::cout << "Uniform variable " << name << " not found in shader program." << std::endl;
+	}
+	else {
+		glUniform3f(location, vector.x, vector.y, vector.z);
+	}
+	glUseProgram(0);
+}
+
 void ShaderProgram::useShaderProgram() {
 	glUseProgram(this->shaderProgram);
 }
@@ -40,6 +52,7 @@ void ShaderProgram::setCamera(Camera* camera) {
 void ShaderProgram::update() {
 	setVariable("viewMatrix", camera->getViewMatrix());
 	setVariable("projectionMatrix", camera->getProjectionMatrix());
+	setVariable("cameraPosition", camera->getPosition());
 }
 
 

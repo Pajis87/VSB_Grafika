@@ -181,6 +181,8 @@
     <None Include="Assets\shaders\clock.vert" />
     <None Include="Assets\shaders\gray.frag" />
     <None Include="Assets\shaders\green.frag" />
+    <None Include="Assets\shaders\phong.frag" />
+    <None Include="Assets\shaders\phong.vert" />
     <None Include="Assets\shaders\tree.vert" />
     <None Include="Assets\shaders\tree2.vert" />
   </ItemGroup>

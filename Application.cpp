@@ -159,6 +159,7 @@ void Application::setupShaders() {
 	shaderPrograms["tree2"] = new ShaderProgram("Assets/shaders/tree2.vert", "Assets/shaders/basic.frag");
 	shaderPrograms["gray"] = new ShaderProgram("Assets/shaders/basic.vert", "Assets/shaders/gray.frag");
 	shaderPrograms["clock"] = new ShaderProgram("Assets/shaders/clock.vert", "Assets/shaders/basic.frag");
+	shaderPrograms["phong"] = new ShaderProgram("Assets/shaders/phong.vert", "Assets/shaders/phong.frag");
 }
 
 void Application::setupModels() {
@@ -213,9 +214,26 @@ void Application::setupDrawableObjects() {
 	scenes["triangle_switched"]->addObject(small_login);
 
 	//Sphere scene
-	DrawableObject* sphere = new DrawableObject(models["sphere"], shaderPrograms["basic"]);
+	DrawableObject* sphere = new DrawableObject(models["sphere"], shaderPrograms["phong"]);
+	sphere->transform.add(new Translation(glm::vec3(-2.0f, 0.0f, 0.0f)));
 	drawableObjects["sphere"] = sphere;
 	scenes["sphere"]->addObject(sphere);
+
+	DrawableObject* sphere2 = new DrawableObject(models["sphere"], shaderPrograms["phong"]);
+	sphere2->transform.add(new Translation(glm::vec3(2.0f, 0.0f, 0.0f)));
+	drawableObjects["sphere2"] = sphere2;
+	scenes["sphere"]->addObject(sphere2);
+
+	DrawableObject* sphere3 = new DrawableObject(models["sphere"], shaderPrograms["phong"]);
+	sphere3->transform.add(new Translation(glm::vec3(0.0f, 2.0f, 0.0f)));
+	drawableObjects["sphere3"] = sphere3;
+	scenes["sphere"]->addObject(sphere3);
+
+	DrawableObject* sphere4 = new DrawableObject(models["sphere"], shaderPrograms["phong"]);
+	sphere4->transform.add(new Translation(glm::vec3(0.0f, -2.0f, 0.0f)));
+	drawableObjects["sphere4"] = sphere4;
+	scenes["sphere"]->addObject(sphere4);
+
 	scenes["sphere"]->addObject(small_login);
 
 	//Forest scene
